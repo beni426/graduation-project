@@ -1,0 +1,12 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+        <p><%= comment.content %></p>
+        <p><%= link_to 'comment edit',edit_post_comment_path(post, comment),remote: true %></p>
+        <p><%= link_to 'comment destroy',post_comment_path(comment.post_id, comment.id), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
