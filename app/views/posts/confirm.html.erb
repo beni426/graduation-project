@@ -1,0 +1,25 @@
+<% provide(:title, "投稿確認") %>
+<div class="post-form">
+  <%= form_with(model: @post, local: true) do |form| %>
+    <div class="post-header">
+      <%# <ul class='row'> %>
+        <%# <li class='col-md-3'><%= form.submit "戻る", class: "btn-original btn-green", name: "back" %></li>
+        <%# <li class='col-md-5'><span class="form-title">新規投稿を確認</span></li> %>
+        <%# <li class='col-md-3'><%= form.submit "投稿", class: "btn-original" %></li>
+      <%# </ul> %>
+    </div>
+     <%= form.label :title, class: "sr-only" %>
+    <%= form.text_area :title, class: "form-control", placeholder: ".....", readonly: true %>
+    <%= form.label :description, class: "sr-only" %>
+    <%= form.text_area :description, class: "form-control", placeholder: ".....", readonly: true %>
+    <%= form.label :image, class: "sr-only" %>
+    <%= form.hidden_field :image, class: "form-control" %>
+    <%= form.hidden_field :image_cache %>
+    <div class="post-image-box">
+      <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
+    </div>
+    <%= form.submit "投稿", class: "btn-original" %>
+    <%= form.submit "戻る", class: "btn-original btn-green", name: "back" %>
+
+  <% end %>
+</div>

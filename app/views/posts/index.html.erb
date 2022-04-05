@@ -1,0 +1,27 @@
+<% if current_user.try(:admin?) %>
+<h1>Posts_admin</h1>
+<% else %>
+<h1>Posts</h1>
+<% end %>
+
+<div class="posts-form">
+  <ul class="post-list">
+    <% @posts.each do |post| %>
+     <li class="post-list-item">
+       <a href=<%= post_path(post.id)%>>
+        <%= image_tag post.image.url if post.image && post.image.url %>
+        </a>
+    </li>
+     <div class="post_item-description">
+       <%= post.title %>
+     </div>
+    <% end %>
+  </ul>
+</div>
+
+
+
+ 
+
+
+
