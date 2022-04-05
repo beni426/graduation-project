@@ -16,7 +16,11 @@
     <%= form.hidden_field :image, class: "form-control" %>
     <%= form.hidden_field :image_cache %>
     <div class="post-image-box">
+    <% if @post.image.url.present? %>
       <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
+      <% else %>
+      <% image_tag 'sea.jpg',:size =>'250x200' %>
+      <% end %>
     </div>
     <%= form.submit "投稿", class: "btn-original" %>
     <%= form.submit "戻る", class: "btn-original btn-green", name: "back" %>

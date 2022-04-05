@@ -10,6 +10,10 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+    <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, autofocus: true, autocomplete: "image" %>
+  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -22,6 +26,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+    <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, autofocus: true,accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= f.hidden_field :image_cache %>
   </div>
 
   <div class="actions">
