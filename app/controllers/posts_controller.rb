@@ -51,6 +51,8 @@ class PostsController < ApplicationController
     @posts = Post.all 
     @posts = @posts.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
+  def top
+  end
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|

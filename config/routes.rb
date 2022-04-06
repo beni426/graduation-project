@@ -19,12 +19,13 @@ Rails.application.routes.draw do
     end
   end
   get '/vote' => 'posts#vote'
+  get '/top' =>'posts#top'
   resources :stocks, only: [:create, :destroy]
   resources :users, only: [:show] do 
     get :stocks, on: :member
   end
   post '/guests/guest_sign_in', to: 'guests#new_guest'
-
+  post '/guests/admin_guest_sign_in', to: 'guests#new_admin_guest'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

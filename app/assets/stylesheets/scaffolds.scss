@@ -1,6 +1,7 @@
 body {
   background-color: #fff;
   color: rgb(247, 244, 244);
+  
    }
 
 body, p, ol, ul, td {
@@ -13,7 +14,7 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px; }
-  header{
+ header{
     margin-top: 0;
     background-color: rgb(97, 99, 99);
     height: 70px;
@@ -119,8 +120,10 @@ div.actions {
 // show
 .label_layout {
   display: flex;
+  flex-wrap: wrap;
   font-size: large;
-  background-color: rgb(142, 142, 230);
+  margin: 5px;
+  background-color: rgb(232, 232, 243);
 }
 .comments_space{
   background-color: aquamarine;
@@ -161,4 +164,58 @@ div.actions {
   padding: 10px;
   background-color: rgb(161, 169, 219);
   color: #fff;
+}
+// top 
+body{
+  width: 100%;
+  height: 100%;
+}
+.main_box{
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  padding-top: 180px;
+  transform-style: preserve-3d;
+  animation: rotate 10s linear infinite;
+
+}
+.main_box :hover{
+  animation-play-state: paused;
+}
+@keyframes rotate{
+    form{
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    to{
+      transform:  rotateX(360deg) rotateY(360deg);
+    }
+}
+.main_box div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 0.7;
+}
+.main_box .front{
+  transform: rotateY(0deg) translateZ(150px);
+}
+.main_box .back{
+  transform: rotateY(180deg) translateZ(-150px);
+}
+.main_box .left{
+  transform: rotateY(180deg) translateZ(150px);
+}
+.main_box .right{
+  transform: rotateY(-90deg) translateZ(150px);
+}
+.main_box .top{
+  transform: rotateX(90deg) translateZ(150px);
+}
+.main_box .bottom{
+  transform: rotateX(-90deg) translateZ(150px);
+}
+.top_page{
+  padding-top: 10%;
 }
