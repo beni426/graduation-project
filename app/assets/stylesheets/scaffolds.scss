@@ -1,23 +1,38 @@
 body {
   background-color: #fff;
-  color: #333;
-  margin: 33px; }
+  color: rgb(247, 244, 244);
+   }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+ 
   line-height: 18px; }
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px; }
-
+  header{
+    margin-top: 0;
+    background-color: rgb(97, 99, 99);
+    height: 70px;
+    
+  }
+.navbar li{
+  list-style: none;
+  color:#fff;
+  text-align: center;
+}
+.top_header image{
+  background-color: rgb(20, 79, 99);
+}
 a {
-  color: #000; }
+  color: hsl(56, 15%, 82%);
+  size: 26rem; }
 
 a:visited {
-  color: #666; }
+  color: rgb(236, 221, 4); }
 
 a:hover {
   color: #fff;
@@ -37,13 +52,22 @@ div.actions {
   border-color: rgb(75, 80, 80);
   border:1px solid  rgb(246, 246, 248);
   background-color: rgb(246, 246, 248);
-  width: 400px;
-  height: 400px;
+  width: 70%;
+  height: 60%;
   border-radius: 5px;
   padding: 10px 10px;
-  margin-left: 40px;
+  border-bottom: 1px solid gray;
   display: inline-block;
-  margin-left: 30%;
+  margin-left: 18%;
+}
+.post-list-item{
+  background:linear-gradient(to left,rgb(141, 139, 139),rgb(218, 218, 243));
+  margin: 10px;
+  padding: 10px;
+  width: 17%;
+}
+.post-list-item:hover{
+  background-color: rgb(190, 218, 208);
 }
 
 #notice {
@@ -74,11 +98,67 @@ div.actions {
   font-size: 12px;
   list-style: square; }
 
-label {
-  display: block; }
+.footer{
+  height: 40px;
+  background:linear-gradient(to left,rgb(128, 123, 123),rgb(109, 109, 138));
+  text-align: center;
+ 
+  bottom: 0;
+}
 
 // index 用
 .post-list{
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
+}
+.post_block_top{
+  margin:10%;
+  position: relative;
+}
+// show
+.label_layout {
+  display: flex;
+  font-size: large;
+  background-color: rgb(142, 142, 230);
+}
+.comments_space{
+  background-color: aquamarine;
+  width: 70%;
+}
+// vote
+.label-title{
+  background-color: rgb(173, 179, 185);
+  border: 1px solid lightblue;
+  border-radius: 3rem;
+  text-align: center;
+  font: 3em sans-serif;
+  color: rgb(100, 44, 4);
+}
+.posts-form-vote{
+  border-color: rgb(51, 58, 58);
+  border:1px solid  rgb(246, 246, 248);
+  background-color: rgb(246, 246, 248);
+  width: 70%;
+  height: 60%;
+  border-radius: 5px;
+  padding: 3px 3px;
+  border-bottom: 1px solid gray;
+  display: inline-block;
+  margin-left: 18%;
+}
+.post-list-item-vote{
+  background:linear-gradient(to left,rgb(185, 182, 182),rgb(184, 184, 212));
+  margin: 3px;
+  padding: 3px;
+  width: 19%;
+  height: 300px;
+}
+.post_block_top p{
+  position: absolute;
+  top: 20px;
+  left: 0;
+  padding: 10px;
+  background-color: rgb(161, 169, 219);
+  color: #fff;
 }

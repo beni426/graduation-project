@@ -1,0 +1,57 @@
+<% if user_signed_in? && @user == current_user %>
+ <h1>マイページ</h1>
+   <p><%= @user.name %> : profile</p>
+   <p><%= @user.email %></p>
+   <p><%= @user.image %></p>
+ <% else %>
+ <h1>ユーザーページ</h1>
+ <% end %>
+  
+<% if user_signed_in? && @user == current_user %>
+  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+<% end %>
+<h1><%= @user.name %>の投稿</h1>
+<div class="posts-form">
+  <ul class="post-list">
+    <% @user.posts.each do |post| %>
+     <li class="post-list-item">
+       <div class='post_block_top'>
+       <a href=<%= post_path(post.id)%>>
+        <% unless post.image.url.nil? %>
+        <%= image_tag post.image.url if post.image && post.image.url %>
+        <% else %>
+        <%= image_tag 'sea.jpg',:size =>'200x250' %>
+        <% end %>
+        </div>
+        <div class='post_block_bottom'>
+            <%= post.title %>
+        </div>
+         </a>
+        <div class='post_block_detail'>
+           <%= post.description %>
+        </div>
+       
+      </li>
+     <div class="post_item-description">
+      </div>
+    <% end %>
+    </ul>
+</div>
+    <h1><%= @user.name %>ストックした投稿</h1>
+
+<% if @stock_list.present? %>
+<div class="posts-form">
+  <ul class="post-list">
+  <% @stock_list.each do |stock| %>
+   <li class="post-list-item">
+    <div>
+    <%= stock.user.name %>
+    </div>
+    <div>
+    <%= image_tag stock.image.url %> 
+    </div>
+    <% end %>
+    </li>
+   </ul>
+  </div>
+<% end %>

@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   # GET /posts or /posts.json
   def index
-    @posts = Post.all 
-
+    @posts = Post.all.includes(:user).order(created_at: :desc) 
+    @posts = @posts.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+    # binding.pry
   end
 
   # GET /posts/1 or /posts/1.json
@@ -12,6 +13,8 @@ class PostsController < ApplicationController
     @posts = Post.where(user_id: @post.user.id).order(created_at: :desc)
     @comments = @post.comments
     @comment = @post.comments.build
+    @post= @post.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+    @stock= current_user.stocks.find_by(post_id: @post.id)
   end
 
   # GET /posts/new
@@ -44,6 +47,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
   end
+  def vote
+    @posts = Post.all 
+    @posts = @posts.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+  end
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
@@ -75,6 +82,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :image, :image_cache)
+      params.require(:post).permit(:title, :description, :image, :image_cache,:status,{ label_ids: [] })
     end
 end

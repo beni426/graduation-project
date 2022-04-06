@@ -8,23 +8,39 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
 
   <body>
   <header class='top-header'>
    <div class='row'>
-    <%# <a href="index.html"><img src="./image/logo.png" class="logo-image"></a> %>
-
+    <ul class='navbar' >
+    <a href="http://localhost:3000/posts"><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a>
+     <li class="col-sm-2"> <%= form_with url: posts_path, method: :get, local: true do |form| %>
+     <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
+     <%= form.submit 'ジャンル別検索', name: nil %></li>
+     <% end %>
+     </li>
+     <li class="col-sm-2"><%= link_to "好奇心" , vote_path %></li>
+     <li class="col-sm-2"><%= link_to "kirai情報館" %></li>
+                       <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
+                       <li><%= link_to 'ゲスト管理者ログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
    <% if user_signed_in? %>
-      <%= link_to "ブログ投稿", new_post_path %>
-      <%= link_to 'マイページ' %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <li class="col-sm-2"> <%= link_to "ブログ投稿", new_post_path %></li>
+      <li class="col-sm-2"> <%= link_to 'マイページ', user_path(current_user.id) %></li>
+      <li class="col-sm-2"> <%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <% if current_user.try(:admin?) %>
+        <%= link_to '管理画面', admin_path  %>
+      <% else %>
+        <%=link_to '管理者ログイン',new_session_path %>
+      <% end %>
     <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
+     <li class="col-sm-2">  <%= link_to "新規登録", new_user_registration_path %></li>
+                     <li> <%= link_to "ログイン", new_user_session_path %></li>
     <% end %>
-    
+    </ul>
   </div>
   </header>
   <% if notice %>
@@ -33,11 +49,16 @@
     <% if alert %>
     <p class="alert alert-error"><%= alert %></p>
     <% end %>
-    <div>
+    <div class="main" >
     <%= yield %>
     <div class="post_item-description">
-       <%# <%= @post.title %> %>
+       <%# <%= @post.title %>
      </div>
-     </div>
+    </div>
+    <footer class='footer'>
+      <div>
+       <p>◎2022 KIRAIBAR Copyright </p>
+      </div>
+    </footer>
   </body>
 </html>
