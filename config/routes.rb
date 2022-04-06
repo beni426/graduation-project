@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do 
     get :stocks, on: :member
   end
+  resources :conversations do
+    resources :messages
+  end
   post '/guests/guest_sign_in', to: 'guests#new_guest'
   post '/guests/admin_guest_sign_in', to: 'guests#new_admin_guest'
   if Rails.env.development?
