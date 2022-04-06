@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
   def show
+    @post=@user.posts
+    stocks = Stock.where(user_id: current_user.id).pluck(:post_id)
+    @stock_list= Post.find(stocks)
+  end
+  def stocks
+    @post=@user.posts
+    stocks = Stock.where(user_id: current_user.id).pluck(:post_id)
+    @stock_list= Post.find(stocks)
   end
   def edit
     unless @user == current_user
@@ -23,6 +31,6 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
   def user_params
-       params.fetch(:user, {}).permit(:name)
+       params.fetch(:user, {}).permit(:name,:image,:image_cache)
   end
 end

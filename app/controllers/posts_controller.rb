@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = @post.comments.build
     @post= @post.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+    @stock= current_user.stocks.find_by(post_id: @post.id)
   end
 
   # GET /posts/new
