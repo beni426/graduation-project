@@ -4,7 +4,7 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.all
   end
   def create
-    if logged_in?
+    if user_signed_in?
           if Conversation.between(params[:sender_id], params[:receiver_id]).present?
             @conversation = Conversation.between(params[:sender_id], params[:receiver_id]).first
           else

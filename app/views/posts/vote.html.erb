@@ -6,17 +6,12 @@
 <div class="posts-form-vote">
   <ul class="post-list">
     <% @posts.each do |post| %>
-     <li class="post-list-item-vote">
+     <li class="post-list-item-vote" id='vote'>
        <div class='post_block_top'>
          <%= post.id %>
-        <% if post.image.url.present? %>
-        <%= image_tag post.image.url if post.image && post.image.url %> <p><%= post.description %></p>
-        <% else %>
-        <%= image_tag 'sea.jpg',:size =>'100x150' %><p><%= post.description %></p>
-        <% end %>
         </div>
         <div class='post_block_bottom'>
-           <%= post.title %>
+           <%= post.description %>
         </div>
        
        </li>
@@ -38,11 +33,6 @@
      <li class="post-list-item">
        <div class='post_block_top'>
          <%= post.id %>
-        <% if post.image.url.present? %>
-        <%= image_tag post.image.url if post.image && post.image.url %>
-        <% else %>
-        <%= image_tag 'sea.jpg',:size =>'200x250' %>
-        <% end %>
         </div>
         <div class='post_block_bottom'>
            <%= post.title %>
