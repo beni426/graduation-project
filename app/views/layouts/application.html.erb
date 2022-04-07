@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'kirai/changecolor.js'%>
+    <%= javascript_include_tag 'kirai/changecolor.js' %>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -24,21 +24,24 @@
      <%= form.submit 'ジャンル別検索', name: nil %></li>
      <% end %>
      </li>
-     <li class="col-sm-2"><%= link_to "好奇心" , vote_path %></li>
+       <%= link_to "好奇心" , vote_path %></li>
        <%= link_to "kirai情報館" %></li>
-      <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
-      <li><%= link_to 'ゲスト管理者ログイン（閲覧用）', guests_admin_guest_sign_in_path, method: :post %></li>
+      
    <% if user_signed_in? %>
-      <%= link_to "ブログ投稿", new_post_path %></li>
-      <%= link_to 'マイページ', user_path(current_user.id) %></li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <% if current_user.try(:admin?) %>
+      <li><%= link_to "ブログ投稿", new_post_path %></li>
+      <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% if current_user.try(:admin?) %>
         <%= link_to '管理画面', rails_admin_path  %>
-      <% end %>
+        <% else %>
+        <li><%= link_to 'ゲスト管理者ログイン（閲覧用）', guests_admin_guest_sign_in_path, method: :post %></li>
+        <% end %>
     <% else %>
-     <li class="col-sm-2">  <%= link_to "新規登録", new_user_registration_path %></li>
-                     <li> <%= link_to "ログイン", new_user_session_path %></li>
+    <li><%= link_to "新規登録", new_user_registration_path %></li>
+    <li> <%= link_to "ログイン", new_user_session_path %></li>
+    <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
     <% end %>
+    <li><a href=<%= notifications_path %>><%= content_tag(:i, "", class: " far fa-bell fa-lg",style: "font-size: 1.6em;") %></a></li>
     </ul>
   </div>
   </header>
@@ -49,15 +52,12 @@
     <p class="alert alert-error"><%= alert %></p>
     <% end %>
     <div class="main" >
-    <%= yield %>
-    <div class="post_item-description">
-       <%# <%= @post.title %>
-     </div>
+      <%= yield %>
+     
     </div>
-    <footer class='footer'>
-      <div>
+    
+      <footer  class='footer'>
        <p>◎2022 KIRAIBAR Copyright </p>
-      </div>
-    </footer>
+      </footer>
   </body>
 </html>

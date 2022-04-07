@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'notifications/index'
   get 'users/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  resources :notifications, only: :index
   post '/guests/guest_sign_in', to: 'guests#new_guest'
   post '/guests/admin_guest_sign_in', to: 'guests#new_admin_guest'
   if Rails.env.development?

@@ -1,0 +1,13 @@
+<% @messages.each do |message| %> 
+    <% if message.user_id == current_user.id %>
+        <div class="current_user">
+            <strong class="current_user"><%= message.body %></strong>
+            <small class="current_user"><%= message.user.name %>さん</small>
+        </div>
+    <% else %>
+        <div class="visited_user">
+            <strong class="visited_user"><%= message.body %></strong>
+            <small class="visited_user"><%= message.user.name %>さん</small>
+        </div>
+    <% end %>
+<% end %>
