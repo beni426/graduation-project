@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_124441) do
+ActiveRecord::Schema.define(version: 2022_04_07_035538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2022_04_05_124441) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+    t.index ["sender_id", "receiver_id"], name: "index_conversations_on_sender_id_and_receiver_id", unique: true
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "labellings", force: :cascade do |t|
@@ -36,6 +46,32 @@ ActiveRecord::Schema.define(version: 2022_04_05_124441) do
     t.string "genre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id"
+    t.integer "visited_id"
+    t.integer "conversation_id"
+    t.integer "message_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_notifications_on_conversation_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -81,6 +117,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_124441) do
   add_foreign_key "comments", "posts"
   add_foreign_key "labellings", "labels"
   add_foreign_key "labellings", "posts"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "stocks", "posts"
   add_foreign_key "stocks", "users"

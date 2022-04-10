@@ -1,5 +1,12 @@
+
+<div class='profile-block'>
 <% if user_signed_in? && @user == current_user %>
  <h1>マイページ</h1>
+    <% unless @user.image.url.nil? %>
+        <%= image_tag @user.image.url if @user.image && @user.image.url %>
+        <% else %>
+        <%= image_tag 'user_default',:size =>'150x150' %>
+        <% end %>
    <p><%= @user.name %> : profile</p>
    <p><%= @user.email %></p>
    <p><%= @user.image %></p>
@@ -8,8 +15,10 @@
  <% end %>
   
 <% if user_signed_in? && @user == current_user %>
-  <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+  <%= link_to "プロフィール編集", edit_user_registration_path(current_user) %>
 <% end %>
+</div>
+<div class='post-block'>
 <h1><%= @user.name %>の投稿</h1>
 <div class="posts-form">
   <ul class="post-list">
@@ -32,13 +41,14 @@
         </div>
        
       </li>
-     <div class="post_item-description">
+      <div class="post_item-description">
       </div>
     <% end %>
     </ul>
 </div>
-    <h1><%= @user.name %>ストックした投稿</h1>
-
+</div>
+<div class='stock-block'>
+<h1><%= @user.name %>ストックした投稿</h1>
 <% if @stock_list.present? %>
 <div class="posts-form">
   <ul class="post-list">
@@ -55,3 +65,4 @@
    </ul>
   </div>
 <% end %>
+</div>
