@@ -1,10 +1,20 @@
 
-<div class='post-form'>
+<div class='post-form' <% change_css %>>
 <%= form_with(model: @post, local: true) do |form| %>
  <%= form.hidden_field :label %>
 <p>
-
-<strong>Image:</strong>
+<p>
+  <div class='show_head'>
+  <%= @post.user.name %>
+  </div>
+</p>
+<p>
+  <%= @post.title %>
+</p>
+ <p>
+  <%= change_css %>D
+  <%= @post.description %>
+</p>
 <%= form.hidden_field :image_cache %>
   <% if @post.image.url.present? %>
   <%= image_tag @post.image.url,size: "250x200"%>
@@ -13,20 +23,6 @@
   <% end %>
   </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Posted by:</strong>
-  <%= @post.user.email %>
-</p>
 <p>
 <strong>Genre:</strong>
  <% @post.labels.each do |label| %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  root to: "posts#index"
   get 'notifications/index'
   get 'users/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -10,13 +11,15 @@ Rails.application.routes.draw do
     }
   resources :users,only: %i[show edit update]
   get '/mypage' => 'users#mypage'
-  root to: "posts#index"
   resources :posts do
     resources :comments
   end
   resources :posts do
     collection do
       post :confirm
+    end
+    member do
+      post :vote_up
     end
   end
   get '/vote' => 'posts#vote'
@@ -33,6 +36,9 @@ Rails.application.routes.draw do
   post '/guests/admin_guest_sign_in', to: 'guests#new_admin_guest'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+  get '/:locale' => 'static_pages#home'
   end
  
 end

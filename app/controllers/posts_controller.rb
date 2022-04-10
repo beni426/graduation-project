@@ -38,8 +38,13 @@ class PostsController < ApplicationController
     render :new if @post.invalid?
   end
   def vote
-    @posts = Post.all 
-    @posts = @posts.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+    @posts=Post.all.includes(:user).order(created_at: :desc) 
+  
+  end
+  def vote_up
+    @post = Post.find(params[:id])
+    @post.votes.create
+    redirect_to vote_path ,notice: "投票をしました！"
   end
   def top
   end

@@ -5,7 +5,7 @@
 <div class="posts-form">
   <ul class="post-list">
     <% @posts.each do |post| %>
-     <li class="post-list-item">
+     <li class="post-list-item" >
        <div class='post_block_top'>
        <a href=<%= post_path(post.id)%>>
         <% unless post.image.url.nil? %>

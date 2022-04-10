@@ -12,12 +12,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'devise-i18n'
+gem 'rails-i18n'
 gem 'rexml'
 gem 'rails_admin', ['>= 3.0.0.rc3', '< 4']
 gem 'cancancan'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
-
+gem 'jquery-rails'
 
 
 group :development, :test do

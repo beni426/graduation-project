@@ -4,16 +4,19 @@
 <p>生活部門</p>
 </div>
 <div class="posts-form-vote">
-  <ul class="post-list">
+  <ul class="post-list-vote">
     <% @posts.each do |post| %>
-     <li class="post-list-item-vote" id='vote'>
-       <div class='post_block_top'>
+     <li class="post-list-item-vote">
+       <%# <div class='post_block_top'>
          <%= post.id %>
-        </div>
+        <%# </div> %>
         <div class='post_block_bottom'>
            <%= post.description %>
         </div>
-       
+        <div class='vote-button'>
+         <%= pluralize(post.votes.count, "票") %>
+         <%= button_to '投票', vote_up_post_path(post.id), method: :post %>
+         </div>
        </li>
        <div class="post_item-description">
 

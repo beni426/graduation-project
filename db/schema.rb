@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_07_035538) do
+ActiveRecord::Schema.define(version: 2022_04_10_111038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,16 @@ ActiveRecord::Schema.define(version: 2022_04_07_035538) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.integer "user_id"
+    t.boolean "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "user_id"], name: "index_votes_on_post_id_and_user_id"
+    t.index ["post_id"], name: "index_votes_on_post_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "labellings", "labels"
   add_foreign_key "labellings", "posts"
@@ -122,4 +132,5 @@ ActiveRecord::Schema.define(version: 2022_04_07_035538) do
   add_foreign_key "posts", "users"
   add_foreign_key "stocks", "posts"
   add_foreign_key "stocks", "users"
+  add_foreign_key "votes", "posts"
 end
