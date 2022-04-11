@@ -22,16 +22,16 @@
 <h1><%= @user.name %>の投稿</h1>
  <p> 今日のスッキリ<p>
    
-<div class="posts-form">
+<div class="posts-form-show">
   <ul class="post-list">
     <% @user.posts.each do |post| %>
      <li class="post-list-item">
        <div class='post_block_top'>
        <a href=<%= post_path(post.id)%>>
         <% unless post.image.url.nil? %>
-        <%= image_tag post.image.url if post.image && post.image.url %>
+        <%= image_tag (post.image.url if post.image && post.image.url) %>
         <% else %>
-        <%= image_tag 'sea.jpg',:size =>'200x250' %>
+        <%= image_tag 'sea.jpg',width: '80%', height: '80%' %>
         <% end %>
         </div>
         <div class='post_block_bottom'>

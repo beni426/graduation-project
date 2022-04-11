@@ -1,6 +1,6 @@
 body {
-  background-color: #fff;
-  color: rgb(247, 244, 244);
+  background:linear-gradient(to bottom,rgb(97, 95, 95),rgb(62, 62, 69));
+  color: rgb(103, 86, 86);
   
    }
 
@@ -64,6 +64,7 @@ div.actions {
   border-bottom: 1px solid gray;
   display: inline-block;
   margin-left: 18%;
+  margin-right: 18%;
 }
 .post-list-item{
   background:linear-gradient(to left,rgb(141, 139, 139),rgb(218, 218, 243));
@@ -178,7 +179,7 @@ div.actions {
 .vote-button{
   position:absolute;
   background-color: rgb(146, 146, 216);
-  left: 60%;
+  left: 70%;
 }
 .post_block_bottom {
   box-shadow: rgb(190, 188, 188);
@@ -190,11 +191,8 @@ body{
   height: 100%;
   position: relative;
 }
-.main{
-  height: 100%;
-  margin-bottom: 0 ;
-  background: rgb(80, 63, 63);
-}
+
+
 .container{
   background:linear-gradient(to bottom,rgb(139, 133, 133),rgb(11, 11, 29));
   height: 100%;
@@ -262,7 +260,18 @@ body{
 // user.show
 
 .profile-block{
-  background-color: blanchedalmond;
+  background-color: rgb(238, 233, 224);
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}.posts-form-show{
+  background-color: rgb(229, 223, 215);
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.stock-block{
+  background-color: rgb(230, 224, 216);
   text-align: center;
   margin-left: 20%;
   margin-right: 20%;
