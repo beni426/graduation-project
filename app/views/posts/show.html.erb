@@ -1,34 +1,32 @@
 
-<div class='post-form' <% change_css %>>
+<div class='post-form'>
 <%= form_with(model: @post, local: true) do |form| %>
  <%= form.hidden_field :label %>
 <p>
 <p>
   <div class='show_head'>
-  <%= @post.user.name %>
+   <%= @post.user.name %>
   </div>
 </p>
 <p>
   <%= @post.title %>
 </p>
  <p>
-  <%= change_css %>D
-  <%= @post.description %>
+   <%= @post.description %>
 </p>
-<%= form.hidden_field :image_cache %>
-  <% if @post.image.url.present? %>
-  <%= image_tag @post.image.url,size: "250x200"%>
-  <% else %>
-  <%= image_tag 'sea.jpg',:size =>'250x200' %>
-  <% end %>
+  <%= form.hidden_field :image_cache %>
+    <% if @post.image.url.present? %>
+    <%= image_tag @post.image.url,size: "250x200"%>
+    <% else %>
+    <%= image_tag 'sea.jpg',:size =>'250x200' %>
+   <% end %>
   </p>
 
 <p>
-<strong>Genre:</strong>
- <% @post.labels.each do |label| %>
-    <%# <% binding.pry %>  
-       <% label.genre %>
-    <%end%>
+  <strong>Genre:</strong>
+    <% @post.labels.each do |label| %>
+       <%= label.genre %>
+   <%end%>
  </p>
  <% end %>
  <% if user_signed_in? %>
@@ -59,10 +57,9 @@
 </div>
 <div class='post-form'>
 <div id="comments_area">
-<%= render partial: 'comments/index',locals: {comments: @comments,post: @post} %>
+   <%= render partial: 'comments/index',locals: {comments: @comments,post: @post} %>
 </div>
  <% end %>
- <% if user_signed_in? %>
-<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
- <% end %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+
 </div>

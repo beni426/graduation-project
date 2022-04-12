@@ -19,6 +19,7 @@ gem 'cancancan'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem "chartkick" 
 
 
 group :development, :test do

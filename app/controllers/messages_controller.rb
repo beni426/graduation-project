@@ -18,42 +18,40 @@ class MessagesController < ApplicationController
       @messages = @messages.order(:created_at)
       @message = @conversation.messages.build
     end
+    def create
+        @message = @conversation.messages.build(message_params)
+      @conversation= @message.conversation
+      if @message.save
+        other_room = Entry.where(conversation_id: @conversation.id).where.not(user_id: current_user.id)
+        theid= other_room.find_by(conversation_id: @conversation.id)
+        notification = current_user.active_notifications.new(
+           conversation_id: @conversation.id,
+           message_id: @message.id,
+           visited_id: @theid.user_id,
+           visitor_id: current_user.id,
+           action: 'dm'
+        )
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        notification.save if notification.valid?
+        redirect_to conversation_messages_path(@conversation)
+      else
+    
+        render 'index'
+      end
+    end
     # def create
-    #   if Entry.where(user_id: current_user.id, conversation_id: params[:message][:conversation_id]).present?
-      
     #   @message = @conversation.messages.build(message_params)
-    #   @conversation = @message.conversation
     #   if @message.save
-    #     @conversationnottome = Entry.where(conversation_id: @conversation.id).where.not(user_id: current_user.id)
-    #     @theid= @conversationnottome.find_by(conversation_id: @conversation.id)
-    #     notification = current_user.active_notifications.new(
-    #        conversation_id: @conversation.id,
-    #        message_id: @message.id,
-    #        visited_id: @theid.user_id,
-    #        visitor_id: current_user.id,
-    #        action: 'dm'
-    #     )
-    #     if notification.visitor_id == notification.visited_id
-    #       notification.checked = true
-    #     end
-    #     notification.save if notification.valid?
     #     redirect_to conversation_messages_path(@conversation)
-    #   end
     #   else
     #     render 'index'
     #   end
     # end
-    def create
-      @message = @conversation.messages.build(message_params)
-      if @message.save
-        redirect_to conversation_messages_path(@conversation)
-      else
-        render 'index'
-      end
-    end
     private
   
     def message_params
-      params.require(:message).permit(:body, :user_id,:conversation_id)
+      params.require(:message).permit(:body, :user_id,:conversation_id).merge(user_id: current_user.id)
     end
   end

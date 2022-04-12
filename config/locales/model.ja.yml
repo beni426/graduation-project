@@ -3,6 +3,13 @@ ja:
     models:
       post: ブログ
       user: ユーザー
+      vote: 投票
+      comment: コメント
+      stock: ストック
+      message: メッセージ
+      label: ラベル
+      notification: 通知
+      conversation: 会話
     attributes:
       post:
         title: タイトル

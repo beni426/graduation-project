@@ -21,7 +21,7 @@
 <div class='post-block'>
 <h1><%= @user.name %>の投稿</h1>
  <p> 今日のスッキリ<p>
-   
+  
 <div class="posts-form-show">
   <ul class="post-list">
     <% @user.posts.each do |post| %>
@@ -60,7 +60,12 @@
     <%= stock.user.name %>
     </div>
     <div>
-    <%= image_tag stock.image.url %> 
+    
+      <%# <% if @post.image.present? %> 
+       <%= image_tag stock.image.url %> 
+      <%# <% else %> 
+      <%# <%= image_tag 'simley-2.jpg' %> 
+      <%# <% end %>
     </div>
     <% end %>
     </li>

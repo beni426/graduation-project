@@ -1,0 +1,30 @@
+
+[1mFrom:[0m /home/beni/workspace/graduation/kiraibar/app/controllers/messages_controller.rb:23 MessagesController#create:
+
+    [1;34m21[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m22[0m:   binding.pry
+ => [1;34m23[0m:   [32mif[0m [1;34;4mEntry[0m.where([35muser_id[0m: current_user.id, [35mconversation_id[0m: params[[33m:message[0m][[33m:conversation_id[0m]).present?
+    [1;34m24[0m:    
+    [1;34m25[0m:     @message = @conversation.messages.build(message_params)
+    [1;34m26[0m:   @conversation = @message.conversation
+    [1;34m27[0m:   [32mif[0m @message.save
+    [1;34m28[0m:     @otherroom = [1;34;4mEntry[0m.where([35mconversation_id[0m: @conversation.id).where.not([35muser_id[0m: current_user.id)
+    [1;34m29[0m:     @theid= @otherroom.find_by([35mconversation_id[0m: @conversation.id)
+    [1;34m30[0m:     notification = current_user.active_notifications.new(
+    [1;34m31[0m:        [35mconversation_id[0m: @conversation.id,
+    [1;34m32[0m:        [35mmessage_id[0m: @message.id,
+    [1;34m33[0m:        [35mvisited_id[0m: @theid.user_id,
+    [1;34m34[0m:        [35mvisitor_id[0m: current_user.id,
+    [1;34m35[0m:        [35maction[0m: [31m[1;31m'[0m[31mdm[1;31m'[0m[31m[0m
+    [1;34m36[0m:     )
+    [1;34m37[0m:     [32mif[0m notification.visitor_id == notification.visited_id
+    [1;34m38[0m:       notification.checked = [1;36mtrue[0m
+    [1;34m39[0m:     [32mend[0m
+    [1;34m40[0m:     notification.save [32mif[0m notification.valid?
+    [1;34m41[0m:     redirect_to conversation_messages_path(@conversation)
+    [1;34m42[0m:   [32mend[0m
+    [1;34m43[0m:   [32melse[0m
+    [1;34m44[0m:     render [31m[1;31m'[0m[31mindex[1;31m'[0m[31m[0m
+    [1;34m45[0m:   [32mend[0m
+    [1;34m46[0m: [32mend[0m
+

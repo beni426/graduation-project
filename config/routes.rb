@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
-  get '/:locale' => 'static_pages#home'
+  get '/:locale' => 'posts#index'
   end
  
 end

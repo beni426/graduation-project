@@ -3,13 +3,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc) 
-    @posts = @posts.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+    @posts = @posts.all.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
   def show
     @posts = Post.where(user_id: @post.user.id).order(created_at: :desc)
     @comments = @post.comments
     @comment = @post.comments.build
-    @post= @post.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     @stock = current_user.stocks.find_by(post_id: @post.id) if user_signed_in?
   end
   def new
@@ -60,7 +59,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
 
@@ -71,12 +69,9 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :description, :image, :image_cache,:status,{ label_ids: [] })
     end

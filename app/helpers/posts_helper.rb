@@ -6,8 +6,8 @@ module PostsHelper
                post_path
      end
  end
- def change_css
-    cnt=current_user.posts.size % 5
-    %w[lightgrey lightblue orange green red][cnt]
- end
+#  def change_css
+#     cnt=current_user.posts.size % 5
+#     %w[lightgrey lightblue orange green red][cnt]
+#  end
 end

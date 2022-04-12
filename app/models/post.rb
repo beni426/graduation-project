@@ -10,4 +10,9 @@ class Post < ApplicationRecord
     enum status: { public: 0, private: 1 }, _prefix: true
     has_many :votes, dependent: :destroy
     mount_uploader :image, ImageUploader
+
+
+    def self.today
+      # where(:created_at => (Date.beginning_of_day..Date.end_of_day))
+    end
 end
