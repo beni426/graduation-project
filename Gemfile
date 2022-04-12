@@ -20,6 +20,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem "chartkick" 
+gem 'kaminari'
 
 
 group :development, :test do

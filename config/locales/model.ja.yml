@@ -15,7 +15,10 @@ ja:
         title: タイトル
         description: 説明
         image: 画像
-        status: 
+        status: ステータス
+        statused:
+          public: 公開
+          private: 非公開
         
       user:
         title: タイトル
@@ -25,3 +28,12 @@ ja:
         reset_password_token: パスワードリセット
         reset_password_send_at: 確認用パスワード
         remember_created_at: ログインを記憶
+      label:
+        genre: ジャンル
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate:

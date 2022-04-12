@@ -1,5 +1,4 @@
-<%# <% @posts.labels.each do |label| %> 
-<%# <% if labels.genre == 'life' %> 
+
 <div class='label-title'>
 <p><strong>自分も'嫌い'と思ったバーを投票しまくりましょう</strong></p>
 </div>
@@ -9,7 +8,7 @@
      <li class="post-list-item-vote">
        <div class='post_block_top'>
          <%= post.id %>
-         <% post.user.name %>
+         <%= post.user.name %>
         </div>
         <div class='post_block_bottom'>
            <%= post.description %>
@@ -25,6 +24,7 @@
     <% end %> 
     <%# <% end %> 
   </ul>
+  <%= paginate @posts %>
 </div>
  <div class='chart'>
    <%= bar_chart Vote.group(:post_id).group(:value).count , xtitle: "vote count", ytitle: "post"%> 

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc) 
+    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10) 
     @posts = @posts.all.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
   def show
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     render :new if @post.invalid?
   end
   def vote
-    @posts=Post.all.includes(:user).order(created_at: :desc) 
+    @posts=Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
   
   end
   def vote_up
