@@ -6,6 +6,6 @@ class CreateVotes < ActiveRecord::Migration[6.0]
       t.boolean :value
       t.timestamps
     end
-    add_index :votes,[:post_id,:user_id]
+    add_index :votes, %i[post_id user_id]
   end
 end

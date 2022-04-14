@@ -14,11 +14,8 @@ module Kiraibar
     config.i18n.default_locale = :ja
     config.load_defaults 6.0
     config.generators do |g|
-  
       g.assets false
       g.helper false
     end
-
-    
   end
 end

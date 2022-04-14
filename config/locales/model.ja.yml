@@ -16,6 +16,9 @@ ja:
         description: 説明
         image: 画像
         status: ステータス
+        edit: 編集
+        destroy: 削除
+        back: 戻る
         statuses:
           public: 公開
           private: 非公開

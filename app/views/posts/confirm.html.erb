@@ -12,11 +12,6 @@
     <%= form.text_area :title, class: "form-control", placeholder: ".....", readonly: true %>
     <%= form.label :description, class: "sr-only" %>
     <%= form.text_area :description, class: "form-control", placeholder: ".....", readonly: true %>
-    <%= form.label :status, class: "sr-only" %>
-    <%= form.text_area :status, class: "form-control", placeholder: ".....", readonly: true %>
-    <%= form.label :genre, class: "sr-only" %>
-    <%= form.text_area :genre, class: "form-control", placeholder: ".....", readonly: true %>
-    
     <%= form.label :image, class: "sr-only" %>
     <%= form.hidden_field :image, class: "form-control" %>
     <%= form.hidden_field :image_cache %>
@@ -24,7 +19,7 @@
     <% if @post.image.url.present? %>
       <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
       <% else %>
-      <% image_tag 'smiley-2.jpg',:size =>'100x150' %>
+      <% image_tag 'simley-2.jpg',:size =>'250x200' %>
       <% end %>
     </div>
     <%= form.submit "投稿", class: "btn-original" %>

@@ -4,24 +4,24 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :name 
+      t.string :name, null: false
       t.string :email,              null: false
       t.string :encrypted_password, null: false
-      t.text :image
+      t.text :image, null: false
 
       ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      t.string   :reset_password_token, null: false
+      t.datetime :reset_password_sent_at,null: false
 
       ## Rememberable
-      t.datetime :remember_created_at
+      t.datetime :remember_created_at,null: false
 
-      ##Trackable
+      # #Trackable
       t.integer  :sign_in_count, default: 0, null: false
-      t.datetime :current_sign_in_at
-      t.datetime :last_sign_in_at
-      t.inet     :current_sign_in_ip
-      t.inet     :last_sign_in_ip
+      t.datetime :current_sign_in_at,null: false
+      t.datetime :last_sign_in_at,null: false
+      t.inet     :current_sign_in_ip, null: false
+      t.inet     :last_sign_in_ip, null: false
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -33,7 +33,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       t.timestamps null: false
     end
