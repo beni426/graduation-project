@@ -13,7 +13,7 @@ class ConversationsController < ApplicationController
            redirect_to conversation_messages_path(@conversation)
      end
   end
-       private
+   private
      
   def conversation_params
         params.permit(:sender_id, :receiver_id)

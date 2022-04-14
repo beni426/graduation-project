@@ -2,14 +2,12 @@
    <div class='row'>
     <ul class='navbar' >
     <a href="http://localhost:3000/posts"><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a>
-   
-      <li class="col-sm-2"> 
-      <%= form_with url: posts_path, method: :get, local: true do |form| %>
-     <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
-     <%= form.submit 'ジャンル別検索', name: nil %></li>
-     <% end %>
+     <li class="col-sm-2"> 
+       <%= form_with url: posts_path, method: :get, local: true do |form| %>
+       <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
+       <%= form.submit 'ジャンル別検索', name: nil %></li>
+       <% end %>
      </li>
-       
        <%= link_to "トップページ",top_path %></li>
        <%= link_to "好奇心" , vote_path %></li>
    <% if user_signed_in? %>
@@ -26,14 +24,12 @@
        <li> <%= link_to "ログイン", new_user_session_path %></li>
       <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
     <% end %>
-    <li><a href=<%= notifications_path %>><%= content_tag(:i, "", class: " far fa-bell fa-lg",style: "font-size: 1.6em;") %></a></li>
+    <%# <li><a href=<%= notifications_path<%= content_tag(:i, "", class: " far fa-bell fa-lg",style: "font-size: 1.6em;") %></a></li>  
     <li>
     <% if params[:local] == 'en' || params[:locale].blank? %>
      <%=link_to "日本語", '/ja', class: 'nav-link link-btn d-flex' %> 
     <% elsif params[:locale] == 'ja'%> 
     <%= link_to 'change into English', '/en',class: 'nav-link link-btn d-flex' %> 
-    <% elsif params[:locale] == 'zh_CN' %> 
-    <%= link_to '中文','/ja',class: 'nav-link link-btn d-flex'%> 
      <% end %> 
     </li>
     </ul>

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10) 
+    @posts = Post.all.includes(:user).status_public.order(created_at: :desc).page(params[:page]).per(10) 
     @posts = @posts.all.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
   def show
@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = @post.comments.build
     @stock = current_user.stocks.find_by(post_id: @post.id) if user_signed_in?
+    if @post.status_private? && @post.user != current_user
+      respond_to do |format|
+        format.html { redirect_to posts_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
   def new
     @post = Post.new
@@ -37,7 +42,7 @@ class PostsController < ApplicationController
     render :new if @post.invalid?
   end
   def vote
-    @posts=Post.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    @posts=Post.all.includes(:user).status_public.order(created_at: :desc).page(params[:page]).per(10)
   
   end
   def vote_up

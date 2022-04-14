@@ -31,8 +31,14 @@
    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :genre) %>
    </div>
     <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, ['public','private'] %>
+     <%= form.label(:public, for: nil, class:'post-status__label') do %>
+      <%= form.radio_button :status, :public %>
+      <%= I18n.t('activerecord.attributes.post.statuses.public') %>
+    <% end %>
+    <%= form.label(:private, for: nil, class:'post-status__label') do %>
+      <%= form.radio_button :status, :private %>
+      <%= I18n.t('activerecord.attributes.post.statuses.private') %>
+     <% end %>
   </div>
   <div class="actions">
     <%= form.submit %>

@@ -5,7 +5,7 @@
 <div class="posts-form">
   <ul class="post-list">
     <% @posts.each do |post| %>
-    <% if post.status == 'public' %>
+    <%  if post.status_public? %>
      <li class="post-list-item" >
        <div class='post_block_top'>
        <a href=<%= post_path(post.id)%>>

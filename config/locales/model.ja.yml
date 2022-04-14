@@ -16,7 +16,7 @@ ja:
         description: 説明
         image: 画像
         status: ステータス
-        statused:
+        statuses:
           public: 公開
           private: 非公開
         

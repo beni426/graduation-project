@@ -45,6 +45,11 @@ a:hover {
 
 th {
   padding-bottom: 5px; }
+.image{
+  padding:  5px;
+  border-style: none;
+  vertical-align: middle;
+}
 
 td {
   padding: 0 5px 7px; }
@@ -89,6 +94,12 @@ div.actions {
   box-shadow: 0 0 5px 6px #ebe2e1;
   -webkit-animation:div 1s ease ;
    animation:div 1s ease ;
+}
+.post_block_detail{
+  width: 40%;
+  overflow:hidden;
+  margin-left: 30px;
+  padding: 20px;
 }
 
 .post-list :hover{
@@ -155,7 +166,7 @@ div.actions {
   background-color: rgb(232, 232, 243);
 }
 .comments_space{
-  background-color: aquamarine;
+  background-color: rgb(255, 234, 127);
   width: 70%;
 }
 .comment-layout{
@@ -169,7 +180,7 @@ div.actions {
 
  
 }
-.comment-content{
+.comment-contents{
   margin-left: 10px;
   padding: 10px;
   float:right;
@@ -228,6 +239,7 @@ div.actions {
 .post_block_bottom {
   box-shadow: rgb(190, 188, 188);
   margin: 10px;
+  overflow:hidden;
 }
 // top 
 body{
@@ -334,4 +346,18 @@ body{
 }
 .red{
   background-color: rgb(223, 151, 223);
+}
+
+// show.conversation
+.current_user{
+  background: pink;
+}
+.visited_user{
+  background-color: aqua;
+}
+.ui{
+  background: #eee;
+  width: 40%;
+  margin-left: 20%;
+  margin-right: 20%;
 }

@@ -9,7 +9,8 @@
   </div>
 </p>
 <p>
-  <%= @post.title %>
+  <%= @post.title %><br>
+  <%= @post.status %>
 </p>
  <p>
    <%= @post.description %>
@@ -48,7 +49,7 @@
   <% if @post.user_id != current_user.id %>
     <li>
       <div class="item">
-        <%= link_to @post.user.name, user_path %>
+        <%= link_to @post.user.name, user_path(@post.user) %>
         <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
       </div>
     </li>

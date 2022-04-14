@@ -4,7 +4,9 @@
 </div>
 <div class="posts-form-vote">
   <ul class="post-list-vote">
+ 
     <% @posts.each do |post| %>
+     <%  if post.status_public? %>
      <li class="post-list-item-vote">
        <div class='post_block_top'>
          <%= post.id %>
@@ -21,12 +23,12 @@
        <div class="post_item-description">
 
       </div>
-    <% end %> 
-    <%# <% end %> 
+    <% end %>  
+    <% end %>
   </ul>
   <%= paginate @posts %>
 </div>
  <div class='chart'>
-   <%= bar_chart Vote.group(:post_id).group(:value).count , xtitle: "vote count", ytitle: "post"%> 
+   <%= bar_chart Vote.limit(10).group(:post_id).group(:value).count, xtitle: "スキッリバー", ytitle: "KIRAIBAR"%> 
  </div>
 
