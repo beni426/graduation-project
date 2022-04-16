@@ -14,12 +14,12 @@
 <h1>新規投稿</h1>
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title,class: 'form-control',placeholder: "今日のきらいを書こう, #{current_user.name}！", autofocus: true %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control',placeholder: "詳しく書いてみる？", autofocus: true %>
   </div>
 
   <div class="field">
@@ -27,12 +27,18 @@
     <%= form.file_field :image %>
   </div>
   <div class="label_layout">
-   <%= form.label :label %><br>
+   <%= form.label :genre %><br>
    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :genre) %>
    </div>
     <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, ['public','private'] %>
+     <%= form.label(:public, for: nil, class:'post-status__label') do %>
+      <%= form.radio_button :status, :public %>
+      <%= I18n.t('activerecord.attributes.post.statuses.public') %>
+    <% end %>
+    <%= form.label(:private, for: nil, class:'post-status__label') do %>
+      <%= form.radio_button :status, :private %>
+      <%= I18n.t('activerecord.attributes.post.statuses.private') %>
+     <% end %>
   </div>
   <div class="actions">
     <%= form.submit %>

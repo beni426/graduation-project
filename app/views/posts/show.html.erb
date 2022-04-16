@@ -3,58 +3,52 @@
 <%= form_with(model: @post, local: true) do |form| %>
  <%= form.hidden_field :label %>
 <p>
-
-<strong>Image:</strong>
-<%= form.hidden_field :image_cache %>
-  <% if @post.image.url.present? %>
-  <%= image_tag @post.image.url,size: "250x200"%>
-  <% else %>
-  <%= image_tag 'sea.jpg',:size =>'250x200' %>
-  <% end %>
+<p>
+  <div class='show_head'>
+   <%= @post.user.name %>
+  </div>
+</p>
+<p>
+  <%= @post.title %><br>
+  <%= @post.status %>
+</p>
+ <p>
+   <%= @post.description %>
+</p>
+  <%= form.hidden_field :image_cache %>
+    <% if @post.image.url.present? %>
+    <%= image_tag @post.image.url,size: "250x200"%>
+    <% else %>
+    <%= image_tag 'smiley-2.jpg',:size =>'250x200' %>
+   <% end %>
   </p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Posted by:</strong>
-  <%= @post.user.email %>
-</p>
-<p>
-<strong>Genre:</strong>
- <% @post.labels.each do |label| %>
-    <%# <% binding.pry %>  
-       <% label.genre %>
-    <%end%>
- </p>
+  <p>
+   <%= form.hidden_field :label %>
+    <strong>Genre:</strong>
+     <% @post.labels.each do |label| %>
+    <%= label.genre %>
+     <%end%>
+   </p>
  <% end %>
  <% if user_signed_in? %>
- <% unless @post.user_id == current_user.id %>
-  <% if @stock.present? %>
-    <%= link_to 'ストックを解除する', stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'ストックする', stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+   <% unless @post.user_id == current_user.id %>
+     <% if @stock.present? %>
+     <%= link_to 'ストックを解除する', stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
+     <% else %>
+      <%= link_to 'ストックする', stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
 
 <% if current_user.id == @post.user_id %>
-<%= link_to 'Edit', edit_post_path(@post) %> 
-<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to t("activerecord.attributes.post.edit"), edit_post_path(@post) %> 
+<%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
-<%= link_to 'Back', posts_path %>
-
+<%= link_to t("activerecord.attributes.post.back"), posts_path %>
   <% if @post.user_id != current_user.id %>
     <li>
       <div class="item">
-        <%= link_to @post.user.name, user_path %>
+        <%= link_to @post.user.name, user_path(@post.user) %>
         <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
       </div>
     </li>
@@ -63,10 +57,9 @@
 </div>
 <div class='post-form'>
 <div id="comments_area">
-<%= render partial: 'comments/index',locals: {comments: @comments,post: @post} %>
+   <%= render partial: 'comments/index',locals: {comments: @comments,post: @post} %>
 </div>
  <% end %>
- <% if user_signed_in? %>
-<%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
- <% end %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+
 </div>

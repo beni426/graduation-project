@@ -19,7 +19,7 @@
     <% if @post.image.url.present? %>
       <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
       <% else %>
-      <% image_tag 'sea.jpg',:size =>'250x200' %>
+      <% image_tag 'simley-2.jpg',:size =>'250x200' %>
       <% end %>
     </div>
     <%= form.submit "投稿", class: "btn-original" %>

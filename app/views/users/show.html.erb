@@ -1,35 +1,44 @@
 
 <div class='profile-block'>
+<%= form_with(model: @user,class:'back-design', local: true) do |form| %>
+<div class='back-design'>
 <% if user_signed_in? && @user == current_user %>
  <h1>マイページ</h1>
-    <% unless @user.image.url.nil? %>
-        <%= image_tag @user.image.url if @user.image && @user.image.url %>
+    <%= form.hidden_field :image_cache %>
+    <% if @user.image.url.present? %>
+        <%= image_tag (@user.image.url if @user.image && @user.image.url) ,class: 'image-icon'%>
         <% else %>
-        <%= image_tag 'user_default',:size =>'150x150' %>
+        <%= image_tag 'user_default',:size =>'150x150', class: 'image-icon' %>
         <% end %>
    <p><%= @user.name %> : profile</p>
    <p><%= @user.email %></p>
-   <p><%= @user.image %></p>
+  </div>
  <% else %>
  <h1>ユーザーページ</h1>
+ <% end %>
  <% end %>
   
 <% if user_signed_in? && @user == current_user %>
   <%= link_to "プロフィール編集", edit_user_registration_path(current_user) %>
 <% end %>
-</div>
+
+ <p> 今日のスッキリ<p>
+   <div class='energy'>
+    <%= bar_chart Vote.group(:user_id).group(:value).count , xtitle: "スキッリバー",id: "chart-1", width: "300px", height: "100px",colors:  "grey" %> 
+   </div> 
+  </div>
 <div class='post-block'>
-<h1><%= @user.name %>の投稿</h1>
-<div class="posts-form">
+<div class="posts-form-show">
+<h1><%= @user.name %>さんの投稿</h1>
   <ul class="post-list">
     <% @user.posts.each do |post| %>
      <li class="post-list-item">
        <div class='post_block_top'>
        <a href=<%= post_path(post.id)%>>
         <% unless post.image.url.nil? %>
-        <%= image_tag post.image.url if post.image && post.image.url %>
+        <%= image_tag (post.image.url if post.image && post.image.url) %>
         <% else %>
-        <%= image_tag 'sea.jpg',:size =>'200x250' %>
+        <%= image_tag 'sea.jpg',width: '80%', height: '80%' %>
         <% end %>
         </div>
         <div class='post_block_bottom'>
@@ -43,7 +52,7 @@
       </li>
       <div class="post_item-description">
       </div>
-    <% end %>
+     <% end %>
     </ul>
 </div>
 </div>
@@ -55,10 +64,16 @@
   <% @stock_list.each do |stock| %>
    <li class="post-list-item">
     <div>
+    <a href=<%= post_path(stock.id)%>>
     <%= stock.user.name %>
     </div>
-    <div>
-    <%= image_tag stock.image.url %> 
+     <div>
+      <% if stock.image.url.present? %> 
+       <%= image_tag stock.image.url %> 
+      <% else %> 
+      <%= image_tag '/assets/smiley-2.jpg',width: '60%', height: '40%' %>
+      <% end %>
+      </a>
     </div>
     <% end %>
     </li>
