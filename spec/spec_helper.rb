@@ -13,7 +13,14 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rspec/rails'
+require 'support/controller_macros'
 RSpec.configure do |config|
+
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

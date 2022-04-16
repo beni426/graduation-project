@@ -1,0 +1,85 @@
+en:
+  layouts:
+    application:
+      my_page: 'MyPage'
+      message: 'Messages'
+      log in: 'Log in'
+      sign_out: 'Sign out'
+  devise/registrations:
+    new:
+      create_an_account: 'Create an account'
+      email: 'email'
+      password: 'Password'
+    edit:
+      edit_an_acount: 'Edit an acount'
+  users:
+    show:
+      mypage: 'My page'
+      mypost: 'My post'
+      mystock: 'My stock'
+  activerecord:
+    models:
+      post: 'Blog'
+      user: 'user'
+      vote:  'vote'
+      comment: 'comment'
+      stock: 'stock'
+      message: 'message'
+      label: 'label'
+      notification: 'nodification'
+      conversation:  'conversation'
+    attributes:
+      post:
+        title: 'title'
+        description: 'description'
+        image: 'image'
+        status: 'status'
+        edit: 'edit'
+        destroy: 'destroy'
+        back: 'back'
+        post: 'post'
+        statuses:
+          public: 'public'
+          private: 'private'
+        
+      user:
+        title: 'title'
+        name: 'name'
+        email: 'mailaddress'
+        encrypted_password: 'current password'
+        reset_password_token: 'reset password'
+        reset_password_send_at: 'confirm password'
+        remember_created_at: 'remember password'
+      label:
+        genre: 'genre'
+  views:
+    pagination:
+      first: 'first'
+      last: 'last'
+      previous: front
+      next: 'next'
+      truncate:
+    stock:
+      unstock: 'unstock'
+    user:
+      profile: 'Edit profile'
+      mypage: 'mypage'
+      userpage: 'userpage'
+
+    header:
+      top: 'Top'
+      curiosity: 'Curiosity'
+      blog: 'Blog'
+      mypage: 'Mypage'
+      logout: 'Logout'
+      adminpage: 'Admin-page'
+      guest_login: 'guest_login'
+      login: 'Login'
+      sign_in: 'Sign_in'
+      admin_guest_login: 'Admin_guest_login'
+    post:
+      vote: 'vote'
+      roast: 'roast'
+      refresh: 'refresh'
+
+  

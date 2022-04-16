@@ -1,7 +1,9 @@
 body {
-  background:linear-gradient(to bottom,rgb(97, 95, 95),rgb(62, 62, 69));
+  background:linear-gradient(to bottom,rgb(148, 144, 144),rgb(38, 38, 49));
   color: rgb(137, 128, 128);
-  
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
    }
 
 body, p, ol, ul, td {
@@ -136,8 +138,11 @@ div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square; }
+.main{
+  flex:1
+}
 
-.footer{
+.main-footer{
   height: 40px;
   background:linear-gradient(to left,rgb(128, 123, 123),rgb(109, 109, 138));
   text-align: center;
@@ -249,11 +254,25 @@ body{
   height: 100%;
   position: relative;
 }
-
-
-.container{
-  background:linear-gradient(to bottom,rgb(139, 133, 133),rgb(11, 11, 29));
-  height: 100%;
+.container1{
+  border: 1px solid rgb(111, 106, 106);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 60%;
+  margin-left: 20%;
+  margin-right:20%;
+  height: 700px;
+  background-color: rgb(36, 34, 34);
+}
+.autotype{
+  font-size: 4rem;
+  color: #fff;
+  text-align: center;
+  padding-left: 12ox;
+}
+.title p{
+   size: 20rem;
+   text-align: center;
 }
 .main_box{
   width: 300px;
@@ -384,3 +403,11 @@ body{
   text-align: center;
   box-shadow: rgb(183, 181, 181);
 }
+// conversation.index
+.table{
+  background: #3d3a3a;
+  width: 60%;
+ 
+  margin-right: 20%;
+}
+

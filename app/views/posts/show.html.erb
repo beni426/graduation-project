@@ -1,4 +1,4 @@
-
+<% provide(:title, "#{@post.user.name}のKIRAIBAR") %>
 <div class='post-form'>
 <%= form_with(model: @post, local: true) do |form| %>
  <%= form.hidden_field :label %>
@@ -33,15 +33,15 @@
  <% if user_signed_in? %>
    <% unless @post.user_id == current_user.id %>
      <% if @stock.present? %>
-     <%= link_to 'ストックを解除する', stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
+     <%= link_to t('views.stock.unstock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
      <% else %>
-      <%= link_to 'ストックする', stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+      <%= link_to t('activerecord.models.stock') , stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
     <% end %>
 
 <% if current_user.id == @post.user_id %>
 <%= link_to t("activerecord.attributes.post.edit"), edit_post_path(@post) %> 
-<%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: '本当に削除していいですか？' } %>
 <% end %>
 
 <%= link_to t("activerecord.attributes.post.back"), posts_path %>
@@ -49,7 +49,7 @@
     <li>
       <div class="item">
         <%= link_to @post.user.name, user_path(@post.user) %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
+        <%= link_to t('activerecord.models.message'), conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
       </div>
     </li>
 <% end %>

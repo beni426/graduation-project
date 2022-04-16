@@ -19,6 +19,7 @@ ja:
         edit: 編集
         destroy: 削除
         back: 戻る
+        post: 投稿
         statuses:
           public: 公開
           private: 非公開
@@ -40,3 +41,24 @@ ja:
       previous: 前
       next: 次
       truncate:
+    stock:
+      unstock: ストックを解除する
+    user:
+      profile: 'プロファイル編集'
+    header:
+      top: 'トップページ'
+      curiosity: '好奇心'
+      blog: 'ブログ投稿'
+      mypage: 'マイページ'
+      logout: 'ログアウト'
+      adminpage: '管理画面'
+      guest_login: 'ゲストログイン（閲覧用)'
+      login: 'ログイン'
+      sign_in: '新規登録'
+      admin_guest_login: 'ゲスト管理者ログイン（閲覧用）'
+    post:
+      vote: '投票'
+      roast: '愚痴'
+      refresh: 'スッキリ'   
+
+

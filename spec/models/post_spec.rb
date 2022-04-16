@@ -5,15 +5,21 @@ RSpec.describe Post, type: :model do
   # タイトルと内容あれば有効な状態であること
   context 'ポストのタイトルが空の場合' do
     it 'バリデーションにひっかかる' do
-      post = Post.new(title: nil, description: '失敗テスト')
+      post = Post.new(title: nil, description: '失敗テスト',image: nil)
+      expect(post).not_to be_valid
+    end
+  end
+  context 'ポストの説明が空の場合' do
+    it 'バリデーションに引っかかる' do
+      post = Post.new(title: 'post', description: 'テスト', image: nil, user_id: user.id)
       expect(post).not_to be_valid
     end
   end
   # タイトルがなければ無効な状態であること
   context 'ポストのイメージが空の場合' do
-    it 'バリデーションに通る' do
+    it 'バリデーションに引っかかる' do
       post = Post.new(title: 'post', description: 'テスト', image: nil, user_id: user.id)
-      expect(post).to be_valid
+      expect(post).not_to be_valid
     end
   end
 end
