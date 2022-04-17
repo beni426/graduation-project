@@ -1,43 +1,69 @@
-<div class= 'container'>
-<div class='top_page'>
-<div class = 'main_box'>
-  <div class= 'front'>
-    <%= image_tag '1.jpg',:size =>'300x300' %>
-  </div>
-  <div class= 'back'>
-    <%= image_tag '2.jpg',:size =>'300x300' %>
-  </div>
-  <div class= 'left'>
-    <%= image_tag '3.jpg',:size =>'300x300' %>
-  </div>
-  <div class= 'right'>
-    <%= image_tag '4.jpg',:size =>'300x300' %>
-  </div>
-  <div class= 'top'>
-    <%= image_tag '5.jpg',:size =>'300x300' %>
-  </div>
-   <div class= 'bottom'>
-    <%= image_tag '6.jpg',:size =>'300x300' %>
-  </div>
+<div class= 'container1'>
+  <div class='top_page'>
+   <div class = 'main_box'>
+     <div class= 'front'>
+       <%= image_tag '1.jpg',:size =>'300x300' %>
+     </div>
+     <div class= 'back'>
+        <%= image_tag '2.jpg',:size =>'300x300' %>
+     </div>
+     <div class= 'left'>
+       <%= image_tag '3.jpg',:size =>'300x300' %>
+     </div>
+     <div class= 'right'>
+       <%= image_tag '4.jpg',:size =>'300x300' %>
+     </div>
+     <div class= 'top'>
+       <%= image_tag '5.jpg',:size =>'300x300' %>
+     </div>
+     <div class= 'bottom'>
+       <%= image_tag '6.jpg',:size =>'300x300' %>
+     </div>
 
   </div>
-  <div class='text_block'>
-  <p>大人になってから人の前に嫌いという言葉を言えなくてなりました。
-  嫌いなことをずーと我慢することが大人の礼儀として取られています。
-  決してこのような捉え方が我らの心によいのか。
-  日常生活において、誰しもストレスに直面しえます。
-  家庭では、夫婦仲や教育、職場では過重労働、転勤、退職などです。
-  そしてこれらのストレスにうまく適応できなくなると、しばしば身体的、
-  精神的な症状が出ます。たいていの場合は一定範囲内にとどまり短期間でおさまりますが、
-  時と場合によっては予想以上に大きくなり「病的な」レベルに達することもあります。
-  すると仕事や学業、家庭生活に悪影響が及びます。
-    そこで、 少しでも貴方の「きらい」をかき集めることがこのKIRAIBARの役名になります。
-    KIRAIBARで嫌いなことをとことんぶちまけて気持ちをスッキリさせることがストレスの解消につながる。
-    愚痴や、記事、写真などを投稿できます。気になるユーザーにメッセージも送れます。他にみんな
-    のKIRAIBARをスキッリ投票して毎日のスキッリバーを目指いしましょう。</p>
+     <div class='text_block' class='autotype' id = 'autotype'>
+        <div class='title'>
+          <p><h2><strong>KIRAIBARへようこそ</strong><h2></p>
+     <p><h4>大人になってから人の前に嫌いという言葉を言えなくてなりました。
+       嫌いなことをずーと我慢することが大人の礼儀として取られています。
+      決してこのような捉え方が我らの心によいのか。</h4></p>
+     <p><h4>日常生活において、誰しもストレスに直面しえます。
+     家庭では、夫婦仲や教育、職場では過重労働、転勤、退職などです。
+     そしてこれらのストレスにうまく適応できなくなると、しばしば身体的、
+     精神的な症状が出ます。たいていの場合は一定範囲内にとどまり短期間でおさまりますが、
+     時と場合によっては予想以上に大きくなり「病的な」レベルに達することもあります。
+     すると仕事や学業、家庭生活に悪影響が及びます。</h4></p>
+       <p><h4>そこで、 少しでも貴方の「きらい」をかき集めることがこのKIRAIBARの役名になります。
+      KIRAIBARで嫌いなことをとことんぶちまけて気持ちをスッキリさせることが目的です。
+      愚痴や、記事、写真などを投稿したり、気になるユーザーにメッセージを送ることもできます。
+      好奇心ページではみんなのKIRAIBARをスッキリ投票してスッキリタンクを増やすように
+       沢山のスッキリを押しましょう、お互いにスッキリ票を与えて、きもちをスッキリさせましょう。</h4></p>
 
-  </div> 
-</div>
-</div>
+   </div> 
+  </div>
+ </div>
 
+  
 </div>
+<script>
+   $.fn.autotype = function(){
+     var $text=$(this);
+     console.log('this',this);
+     var str= $text.html();
+     var index=0;
+    var x = $text.html();
+    var timer=setInterval(function(){
+     var current =str.substr(index,1);
+        if (current == '<'){
+         index = str.indexOf('>',index)+1;
+        }else{
+          index ++;
+       }
+     $text.html(str.substring(0,index)+(index & 1 ?'I':""));
+       if(index>=str.length){
+           clearInterval(timer);
+         }
+       },100);
+      };
+      $("#autotype").autotype();
+</script>

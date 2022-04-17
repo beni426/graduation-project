@@ -27,8 +27,11 @@ class PostsController < ApplicationController
   def create
    
     @post = current_user.posts.build(post_params)
-    @post.label_ids = @post.labels.map {|p| p.id}
-    
+    hash_label = {}
+    params[:post][:label_ids].each do |label|
+      hash_label[:label_ids] = label.split(",").flatten
+    end
+    @post.attributes = hash_label
     if params[:back]
       render :new
     else
@@ -89,6 +92,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :image_cache, { label_ids: []}, :status).to_unsafe_h
+    params.require(:post).permit(:title, :description, :image, :image_cache, { label_ids: []}, :status)
   end
 end

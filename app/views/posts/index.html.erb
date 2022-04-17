@@ -1,3 +1,4 @@
+<% provide(:title, "")%>
 <% if current_user.try(:admin?) %>
 <h1>Posts_admin</h1>
 <% end %>
@@ -15,16 +16,16 @@
         <%= image_tag 'smiley-2.jpg',width: '60%', height: '40%' %>
         <% end %>
         </div>
+  
         <div class='post_block_bottom'>
             <%= post.title %>
+            <%= time_ago_in_words(post.created_at)+'ago' %>
         </div>
-        <div class="post_item-date">
-          <%= time_ago_in_words(post.created_at)+'ago' %>
-        </div>
-         </a>
+       </a>
         <div class='post_block_detail'>
            <%= post.description %>
         </div>
+       
        <% end %>
       </li>
      

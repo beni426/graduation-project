@@ -23,6 +23,7 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'

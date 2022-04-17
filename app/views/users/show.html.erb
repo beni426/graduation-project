@@ -1,4 +1,4 @@
-
+<% provide(:title, "(#{@user.name})") %>
 <div class='profile-block'>
 <%= form_with(model: @user,class:'back-design', local: true) do |form| %>
 <div class='back-design'>
@@ -19,7 +19,7 @@
  <% end %>
   
 <% if user_signed_in? && @user == current_user %>
-  <%= link_to "プロフィール編集", edit_user_registration_path(current_user) %>
+  <%= link_to t('views.user.profile'), edit_user_registration_path(current_user) %>
 <% end %>
 
  <p> 今日のスッキリ<p>
@@ -57,6 +57,7 @@
 </div>
 </div>
 <div class='stock-block'>
+<% if user_signed_in? && @user == current_user %>
 <h1><%= @user.name %>ストックした投稿</h1>
 <% if @stock_list.present? %>
 <div class="posts-form">
@@ -74,10 +75,16 @@
       <%= image_tag '/assets/smiley-2.jpg',width: '60%', height: '40%' %>
       <% end %>
       </a>
+      <% end %>
     </div>
     <% end %>
     </li>
    </ul>
   </div>
+  <% else %>
+ <div class='message_block'>
+   my note
+ </div>
 <% end %>
+
 </div>

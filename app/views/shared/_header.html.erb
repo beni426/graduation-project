@@ -8,30 +8,33 @@
        <%= form.submit 'ジャンル別検索', name: nil %></li>
        <% end %>
      </li>
-       <%= link_to "トップページ",top_path %></li>
-       <%= link_to "好奇心" , vote_path %></li>
+       <%= link_to t('views.header.top'),top_path %></li>
+       <%= link_to t('views.header.curiosity') , vote_path %></li>
    <% if user_signed_in? %>
-      <li><%= link_to "ブログ投稿", new_post_path %></li>
-      <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to t('views.header.blog'), new_post_path %></li>
+      <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>
+      <li><%= link_to t('views.header.logout'), destroy_user_session_path, method: :delete %></li>
+      <%# <li>
+    <% if params[:local] == 'en' || params[:locale].blank? %>
+    <%# <%= link_to "日本語", '/ja' %> 
+    <%# <% elsif params[:locale] == 'ja' %> 
+     <%# <%= link_to 'English', '/en' %> 
+     <%# <% end %> 
+    <%# </li>  %>
         <% if current_user.try(:admin?) %>
-        <%= link_to '管理画面', rails_admin_path  %>
+        <%= link_to t('views.header.adminpage'), rails_admin_path  %>
         <% else %>
-        <li><%= link_to 'ゲスト管理者ログイン（閲覧用）', guests_admin_guest_sign_in_path, method: :post %></li>
+        <li><%= link_to t('views.header.admin_guest_login'), guests_admin_guest_sign_in_path, method: :post %></li>
         <% end %>
     <% else %>
-      <li><%= link_to "新規登録", new_user_registration_path %></li>
-       <li> <%= link_to "ログイン", new_user_session_path %></li>
-      <li><%= link_to 'ゲストログイン（閲覧用）', guests_guest_sign_in_path, method: :post %></li>
+      <li><%= link_to t('views.header.sign_in'), new_user_registration_path %></li>
+       <li> <%= link_to t('views.header.login'), new_user_session_path %></li>
+      <li><%= link_to t('views.header.guest_login'), guests_guest_sign_in_path, method: :post %></li>
     <% end %>
     <%# <li><a href=<%= notifications_path<%= content_tag(:i, "", class: " far fa-bell fa-lg",style: "font-size: 1.6em;") %></a></li>  
-    <li>
-    <% if params[:local] == 'en' || params[:locale].blank? %>
-     <%=link_to "日本語", '/ja', class: 'nav-link link-btn d-flex' %> 
-    <% elsif params[:locale] == 'ja'%> 
-    <%= link_to 'change into English', '/en',class: 'nav-link link-btn d-flex' %> 
-     <% end %> 
-    </li>
+  
+    <li class='message'>
+    <%= link_to  t('views.header.message-room'),conversations_path %>
     </ul>
   </div>
 </header>
