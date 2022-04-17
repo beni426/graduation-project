@@ -2,56 +2,65 @@
 <div class='post-form'>
 <%= form_with(model: @post, local: true) do |form| %>
  <%= form.hidden_field :label %>
-<p>
-<p>
+  <div class='show-first'>
   <div class='show_head'>
-   <%= @post.user.name %>
+  <% if @post.user.image.url.present? %>
+  <%= image_tag @post.user.image.url,size: "80x80"%>
+  <% else %>
+  <%= image_tag 'user_default',class: 'image-icon1' %>
+   <% end %>
+     <%= link_to @post.user.name, user_path(@post.user) %>
   </div>
-</p>
-<p>
-  <%= @post.title %><br>
-  <%= @post.status %>
-</p>
- <p>
-   <%= @post.description %>
-</p>
+
+   
+    <div class="post_item-date">
+     <%= time_ago_in_words(@post.created_at)+'ago' %>
+    </div>
+   <div class='show-status'>
+    <%= @post.status %>
+   </div>
+   </div>
+  <div class='show-detail'>
+    <div class='show-title'>
+       <%= @post.title %><br>
+     </div>
+     <div class='label-genre'> <%= form.hidden_field :label %>
+      <strong>Genre:</strong>
+       <% @post.labels.each do |label| %>
+       <%= label.genre %>
+       <%end%>
+     </div><br>
+     <div class='show-description'>
+       <%= @post.description %>
+     </div>
+     
   <%= form.hidden_field :image_cache %>
     <% if @post.image.url.present? %>
     <%= image_tag @post.image.url,size: "250x200"%>
     <% else %>
     <%= image_tag 'smiley-2.jpg',:size =>'250x200' %>
    <% end %>
-  </p>
-  <p>
-   <%= form.hidden_field :label %>
-    <strong>Genre:</strong>
-     <% @post.labels.each do |label| %>
-    <%= label.genre %>
-     <%end%>
-   </p>
  <% end %>
+ </div>
  <% if user_signed_in? %>
    <% unless @post.user_id == current_user.id %>
      <% if @stock.present? %>
-     <%= link_to t('views.stock.unstock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %>
+    <li class='post_show-list'> <%= link_to t('views.stock.unstock'), stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger' %></li>
      <% else %>
-      <%= link_to t('activerecord.models.stock') , stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
-      <% end %>
+    <li class='post_show-list'><%= link_to t('activerecord.models.stock') , stocks_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %></li>
     <% end %>
+  <% end %>
 
-<% if current_user.id == @post.user_id %>
-<%= link_to t("activerecord.attributes.post.edit"), edit_post_path(@post) %> 
-<%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+ <% if current_user.id == @post.user_id %>
+  <li class='post_show-list'><%= link_to t("activerecord.attributes.post.edit"), edit_post_path(@post) %></li>
+  <li class='post_show-list'><%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: '本当に削除していいですか？' } %></li>
 <% end %>
 
 <%= link_to t("activerecord.attributes.post.back"), posts_path %>
   <% if @post.user_id != current_user.id %>
-    <li>
       <div class="item">
-        <%= link_to @post.user.name, user_path(@post.user) %>
-        <%= link_to t('activerecord.models.message'), conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
+       <%= link_to t('activerecord.models.message'), conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>
       </div>
-    </li>
 <% end %>
 
 </div>

@@ -56,6 +56,7 @@ ja:
       login: 'ログイン'
       sign_in: '新規登録'
       admin_guest_login: 'ゲスト管理者ログイン（閲覧用）'
+      message-room: 'チャットルーム'
     post:
       vote: '投票'
       roast: '愚痴'
