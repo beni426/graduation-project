@@ -15,11 +15,11 @@
       <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>
       <li><%= link_to t('views.header.logout'), destroy_user_session_path, method: :delete %></li>
       <li>
-     <% if params[:local] == 'en' || params[:locale].blank? %>
-     <%= link_to "日本語", '/ja' %> 
-    <% elsif params[:locale] == 'ja' %> 
-     <%= link_to 'English', '/en' %> 
-      <% end %> 
+     <%# <% if params[:local] == 'en' || params[:locale].blank? %>
+      <%# <%= link_to "日本語", '/ja' %> 
+    <%# <% elsif params[:locale] == 'ja' %> 
+     <%# <%= link_to 'English', '/en' %> 
+      <%# <% end %> 
     </li> 
         <% if current_user.try(:admin?) %>
         <%= link_to t('views.header.adminpage'), rails_admin_path  %>
