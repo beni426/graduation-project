@@ -1,7 +1,9 @@
 require_relative 'boot'
 
 require 'rails/all'
-Bundler.require(*Rails.groups)
+Bundler.require(*Rails.groups(:assets => %w(development test)))
+config.assets.compile = true
+config.serve_static_assets= true
 
 module Kiraibar
   class Application < Rails::Application
