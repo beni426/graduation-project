@@ -56,7 +56,7 @@
   <li class='post_show-list'><%= link_to t("activerecord.attributes.post.destroy"), @post, method: :delete, data: { confirm: '本当に削除していいですか？' } %></li>
 <% end %>
 
-<%= link_to t("activerecord.attributes.post.back"), posts_path %>
+  <li class='post_show-list'><%= link_to t("activerecord.attributes.post.back"), posts_path %></li>
   <% if @post.user_id != current_user.id %>
       <div class="item">
        <%= link_to t('activerecord.models.message'), conversations_path(sender_id: current_user.id, receiver_id: @post.user_id), method: :post %>

@@ -15,16 +15,18 @@
      <%  if post.status_public? %>
      <li class="post-list-item-vote">
        <div class='post_block_top'>
-         <%= post.id %>
-         <%= post.user.name %>
+          <div class='post-id'><%= post.id %></a></div>
+         <%= post.user.name %>さん
         </div>
         <div class='post_block_bottom'>
            <%= post.description %>
         </div>
+        <% if user_signed_in? %>
         <div class='vote-button'>
          <%= pluralize(post.votes.count, "票") %>
          <%= button_to t('views.post.refresh'), vote_up_post_path(post.id), method: :post %>
          </div>
+         <% end %>
        </li>
        <div class="post_item-description">
 

@@ -102,7 +102,7 @@ div.actions {
    animation:div 1s ease ;
 }
 .post_block_bottom{
-  width:40px;
+  
   margin-top: 0;
 }
 .post_item-date{
@@ -199,7 +199,6 @@ div.actions {
   margin-left: 20px;
 }
 .show-detail{
-  display: flex;
   background: #fff;
   border-radius: 5px;
   border: solid 1px rgb(209, 203, 203);
@@ -213,8 +212,11 @@ div.actions {
 }
 .post_show-list{
   list-style: none;
-  display: flex;
-  margin-left: 20px;
+  padding: 4px;
+  border-radius: 4px;
+  border: solid 1px gray;
+  background-color: rgb(93, 91, 91);
+  float: right;
 }
 .comments_space{
   background-color: rgb(255, 234, 127);
@@ -270,11 +272,17 @@ div.actions {
 .post-list-item-vote{
   background:linear-gradient(to left,rgb(114, 111, 111),rgb(224, 224, 233));
   margin: 3px;
+  margin-right: 30px;
   padding: 3px;
   height: 50px;
   list-style: none;
   display: flex;
 
+}
+.post-id{
+  background: rgb(210, 210, 238);
+  border-radius: 100px;
+ 
 }
 .chart{
   background-color: #f0f0f0;
@@ -289,7 +297,7 @@ div.actions {
 }
 .post_block_bottom {
   box-shadow: rgb(190, 188, 188);
-  margin: 10px;
+  margin: 15px;
   overflow:hidden;
 }
 // top 

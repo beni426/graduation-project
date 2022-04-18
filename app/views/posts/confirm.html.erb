@@ -7,6 +7,8 @@
     <%= form.text_area :title, class: "form-control", placeholder: ".....", readonly: true %>
     <%= form.label :description, class: "sr-only" %>
     <%= form.text_area :description, class: "form-control", placeholder: ".....", readonly: true %>
+     <%= form.label :status, class: "sr-only" %>
+    <%= form.text_area :status, class: "form-control", placeholder: ".....", readonly: true %>
     <%= form.label :label, class: "sr-only" %>
     <%= form.hidden_field :label_ids,multiple: true, value: @post.label_ids.join(","), class: "form-control" %>
     <%= form.label :image, class: "sr-only" %>
