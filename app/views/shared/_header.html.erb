@@ -1,7 +1,7 @@
   <header class='top-header'>
    <div class='row'>
     <ul class='navbar' >
-    <a href=<% posts_path %>><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a>
+    <a href=<%= posts_path %>><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a>
      <li class="col-sm-2"> 
        <%= form_with url: posts_path, method: :get, local: true do |form| %>
        <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
