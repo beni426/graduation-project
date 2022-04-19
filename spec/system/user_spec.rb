@@ -14,7 +14,7 @@ RSpec.describe "ユーザー機能", type: :system do
         fill_in 'パスワード', with: 'password'
         fill_in 'パスワード（確認用）', with: 'password'
         click_on 'Sign up'
-        expect(page).to have_content 'アカウント登録しました'
+        expect(page).to have_content 'アカウント登録が完了しました。'
        end
     end
       context 'フォームに間違えた値を入れる'do
@@ -62,22 +62,23 @@ RSpec.describe "ユーザー機能", type: :system do
                click_on 'マイページ'
                click_on 'プロファイル編集'
                fill_in 'パスワード',with: '123456'
-               fill_in 'パスワード(確認用)',with: '123456'
-               click_on '更新'
-               expect(page).to have_content 'プロファイルを編集しました'
+               fill_in 'パスワード（確認用）',with: '123456'
+               fill_in '現在のパスワード',with: 'password'
+               click_on 'Update'
+               expect(page).to have_content 'カウント情報を変更しました。'
            end
          end
        context '各フォームに正しいちを入れる' do
            it 'ユーザープロファイルを更新失敗' do
             visit new_user_session_path
             fill_in 'メールアドレス', with: 'user9@example.com'
-            fill_in 'パスワード', with: 'passwrod'
+            fill_in 'パスワード', with: 'password'
             click_button 'Log in'
             click_on 'マイページ'
             click_on 'プロファイル編集'
             fill_in 'パスワード',with: '123456'
-            click_on '更新'
-            expect(page).to have_content 'パスワードを入力してください。'
+            click_on 'Update'
+            expect(page).to have_content '2 件のエラーが発生したため ユーザー は保存されませんでした:'
            end
          end
        end
@@ -87,11 +88,11 @@ RSpec.describe "ユーザー機能", type: :system do
                 visit new_user_session_path
                 fill_in 'メールアドレス', with: 'user9@example.com'
                 fill_in 'パスワード', with: 'password'
-                click_button 'ログイン'
+                click_button 'Log in'
                 click_on 'マイページ'
                 click_on 'プロファイル編集'
-                click_on 'アカウントの削除'
-                page.accept_confirm '本当にアカウントを削除しますか'
+                click_on 'Cancel my account'
+                page.accept_confirm 'Are you sure'
                 expect(page).to have_content ''
             end
         end

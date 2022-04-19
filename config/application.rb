@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups(:assets => %w(development test)))
 module Kiraibar
   class Application < Rails::Application
     config.time_zone = 'Tokyo'
-    config.assets.compile = true
+    config.assets.compile = false
     config.serve_static_assets= true
     config.i18n.available_locales = %i(ja en)
     config.i18n.enforce_available_locales = true

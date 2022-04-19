@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'posts#index'
+  root to: 'posts#top'
   get 'notifications/index'
   get 'users/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
