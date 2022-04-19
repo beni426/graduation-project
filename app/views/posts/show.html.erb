@@ -7,7 +7,7 @@
   <% if @post.user.image.url.present? %>
   <%= image_tag @post.user.image.url,size: "80x80"%>
   <% else %>
-  <%= image_tag 'user_default',class: 'image-icon1' %>
+  <%= image_tag 'user_default.png',class: 'image-icon1' %>
    <% end %>
      <%= link_to @post.user.name, user_path(@post.user) %>
   </div>
