@@ -9,6 +9,7 @@
        <% end %>
      </li>
        <%= link_to t('views.header.top'),top_path %></li>
+       <li><%= link_to 'ホーム',posts_path %></li>
        <%= link_to t('views.header.curiosity') , vote_path %></li>
    <% if user_signed_in? %>
       <li><%= link_to t('views.header.blog'), new_post_path %></li>
