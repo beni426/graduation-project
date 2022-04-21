@@ -1,6 +1,6 @@
 body {
   background:linear-gradient(to bottom,rgb(103, 96, 96),rgb(38, 38, 49));
-  color: rgb(137, 128, 128);
+  color: #060607;
   min-height: 100vh;
   display: flex;
   flex-flow: column;
@@ -20,6 +20,7 @@ header{
     margin-top: 0;
     background:linear-gradient(to left,rgb(78, 74, 74),rgb(144, 144, 146));
     height: 70px;
+    display: flex;
     
 }
 .navbar{
@@ -30,6 +31,7 @@ header{
   color:#fff;
   text-align: center;
   margin: 10px;
+  margin-left: 10pxpx;
 }
 .top_header image{
   background-color: rgb(133, 175, 189);
@@ -38,6 +40,12 @@ a {
   color: hsl(56, 15%, 82%);
   size: 26rem;
   }
+.kirai_logo{
+  display: flex;
+  vertical-align: middle;
+  margin-top: 4px;
+  margin-left: 2px;
+}
 
 a:visited {
   color: rgb(245, 230, 16); }
@@ -61,6 +69,98 @@ div.field,
 div.actions {
   text-align: center;
   margin-bottom: 10px; }
+// hambergermenu
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  /* display: block; */
+}
+
+
+
+
+
+.sm {
+  display: none;
+}
+.pc{
+  width: 90%;
+}
+
+
+/**********************************　
+以下、ハンバーガーメニューの設定　
+************************************/
+
+@media (max-width: 1114px) {
+
+  .pc {
+    display: none;
+  }
+
+  #hamburger {
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    margin: 0 0 0 auto;
+    height: 60px;
+    width: 60px;
+  }
+
+  .icon span {
+    position: absolute;
+    left: 15px;
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 8px;
+    transition: ease 0.75s;
+  }
+
+  .icon span:nth-of-type(1) {
+    top: 16px;
+  }
+  .icon span:nth-of-type(2) {
+    top: 28px;
+  }
+  .icon span:nth-of-type(3) {
+    bottom: 16px;
+  }
+
+  .close span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 28px;
+  }
+
+  .close span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .close span:nth-of-type(3) {
+      transform: rotate(-45deg);
+      top: 28px;
+  }
+
+  .sm {
+      top: 60px;
+      left: 0px;
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      background-color: rgba(34, 49, 52, 0.9);
+  }
+
+  ul {
+    flex-direction: column;
+  }
+
+  a {
+    text-align: center; 
+    border-top: solid 0.5px rgba(255, 255, 255, 0.6);
+  }
+}
+
+
+
   // index
 .post-form{
   text-align: center;

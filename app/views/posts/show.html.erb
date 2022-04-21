@@ -9,7 +9,11 @@
   <% else %>
   <%= image_tag 'user_default.png',class: 'image-icon1' %>
    <% end %>
+    <% if user_signed_in? %>
      <%= link_to @post.user.name, user_path(@post.user) %>
+    <% else %>
+     <%= link_to @post.user.name, new_user_registration_path %>
+     <% end %>
   </div>
 
    
