@@ -11,25 +11,21 @@ RSpec.describe Post, type: :system do
    let(:labelling){create(post_id: Post.last.id, label_id: Label.last.id)}
    describe '新規投稿機能' do
     before do
-      visit new_user_session_path
-      fill_in "メールアドレス", with: 'user9@example.com'
-      fill_in "パスワード", with: 'password'
-      click_on "Log in"
+     sign_in user
     end
      context '投稿を新規作成場合' do
        it '作成した投稿を一覧画面に表示される' do
          visit posts_path
-       
-         click_on 'ブログ投稿',match: :first
+         click_on 'ブログ投稿'
          fill_in 'タイトル', with: 'Ruby'
          fill_in '説明', with: 'ここが内容です'
-        #  select 'life-1', from: 'label_id'
+         select 'life-1', from: 'label_id'
          page.attach_file("#{Rails.root}/spec/fixtures/1.jpg") do
           page.find('#post_image').click
          end 
         
          click_on '登録'
-         expect(page).to have content 'test'
+         expect(page).to have content 'ここが内容です'
       end
      end
     context '任意の記事の詳細画面に遷移した場合' do

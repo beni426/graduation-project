@@ -25,8 +25,7 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-   
-    @post = current_user.posts.build(post_params)
+   @post = current_user.posts.build(post_params)
     hash_label = {}
     params[:post][:label_ids].each do |label|
       hash_label[:label_ids] = label.split(",").flatten
@@ -78,7 +77,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-
     respond_to do |format|
       format.html { redirect_to posts_url, notice: '投稿を削除しました！' }
       format.json { head :no_content }
