@@ -12,50 +12,36 @@ RSpec.describe 'label管理機能', type: :system do
    let(:labelling){create(post_id: Post.last.id, label_id: Label.last.id)}
    describe 'ラベル機能' do
      before do
-      visit new_user_session_path
-      fill_in "メールアドレス", with: 'user9@example.com'
-      fill_in "パスワード", with: 'password'
-      click_on "Log in"
+     sign_in user
     end
     context 'ラベルをポストにつけること' do
         it "投稿の編集する画面でラベルをつけること" do
           visit post_path(1)
            click_on '編集'
-           select 'life-2', from: 'label_id'
+           sleep 2
+            check label.genre
            click_button '更新する'
           expect(page).to have_text '投稿を更新しました！'
         end
       end
-  
-      context 'タスク詳細画面でラベルを確認すること' do
-        it "タスク詳細画面でラベルを表示すること" do
+      context 'ラベルをポストに外すこと' do
+        it "投稿の編集する画面でラベルを外すこと" do
           visit post_path(1)
-          click_on '編集'
-          select 'life-5', from: 'label_id'
-          click_button '更新する'
-          expect(page).to have_content 'life-5'
+           click_on '編集'
+           uncheck label.genre
+           click_button '更新する'
+          expect(page).to have_text '投稿を更新しました！'
         end
       end
-      # context 'ラベルをポストに外すこと' do
-      #   it "投稿の編集する画面でラベルを外すこと" do
-      #     visit post_path(1)
-      #      click_on '編集'
-      #     #  binding.pry
-      #      uncheck 'post_label_ids_777'
-      #      click_button '更新する'
-      #     expect(page).to have_text '投稿を更新しました！'
-      #   end
-      # end
     describe 'ラベル検索機能' do
       context 'ラベルの検索できること' do
         it "検索キーワードをラベルに含み、一致するタスク絞り込まれる" do
          visit posts_path
-      
-         select 'life-9', from: 'label_id'
-         click_button 'ジャンル別検索'
+         select 'life-1', from: 'label_id',match: :first
+         click_button 'ジャンル別検索',match: :first
          expect(page).to have_content 'ここが内容です'
         end
       end
     end
-    end
+  end
 end

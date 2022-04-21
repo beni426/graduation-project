@@ -48,6 +48,7 @@ ja:
     header:
       top: 'トップページ'
       curiosity: '好奇心'
+      home: 'ホーム'
       blog: 'ブログ投稿'
       mypage: 'マイページ'
       logout: 'ログアウト'

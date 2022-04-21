@@ -1,28 +1,26 @@
   <header class='top-header'>
-   <div class='kirai_logo'>
-   <a href=<%= posts_path %>><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a></div>
-   <div class='pc'>
+   <div class='row'>
     <ul class='navbar' >
-    
-     <li> 
+    <a href=<% posts_path %>><%= image_tag "logo.png", alt: "icon", id: "assets", class: "image", width: "60px" %></a>
+     <li class="col-sm-2"> 
        <%= form_with url: posts_path, method: :get, local: true do |form| %>
        <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
        <%= form.submit 'ジャンル別検索', name: nil %></li>
        <% end %>
      </li>
        <%= link_to t('views.header.top'),top_path %></li>
-       <li><%= link_to 'ホーム',posts_path %></li>
+       <%= link_to t('views.header.home'),posts_path %></li>
        <%= link_to t('views.header.curiosity') , vote_path %></li>
-     <% if user_signed_in? %>
+   <% if user_signed_in? %>
       <li><%= link_to t('views.header.blog'), new_post_path %></li>
       <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>
       <li><%= link_to t('views.header.logout'), destroy_user_session_path, method: :delete %></li>
       <li>
-     <%# <% if params[:local] == 'en' || params[:locale].blank? %>
-      <%# <%= link_to "日本語", '/ja' %> 
-    <%# <% elsif params[:locale] == 'ja' %> 
-     <%# <%= link_to 'English', '/en' %> 
-      <%# <% end %> 
+     <% if params[:local] == 'en' || params[:locale].blank? %>
+     <%= link_to "日本語", '/ja' %> 
+    <% elsif params[:locale] == 'ja' %> 
+     <%= link_to 'English', '/en' %> 
+      <% end %> 
     </li> 
         <% if current_user.try(:admin?) %>
         <%= link_to t('views.header.adminpage'), rails_admin_path  %>
@@ -37,54 +35,7 @@
     <%# <li><a href=<%= notifications_path<%= content_tag(:i, "", class: " far fa-bell fa-lg",style: "font-size: 1.6em;") %></a></li>  
   
     <li class='message'>
-    <%= link_to  t('views.header.message-room'),conversations_path %></li>
-    
-    </ul>
- 
-  </div>
-  <div class='sm'>
-    <ul class='navbar' >
-       <%= link_to t('views.header.top'),top_path %></li>
-       <li><%= link_to 'ホーム',posts_path %></li>
-       <%= link_to t('views.header.curiosity') , vote_path %></li>
-     <% if user_signed_in? %>
-      <li><%= link_to t('views.header.blog'), new_post_path %></li>
-      <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>
-      <li><%= link_to t('views.header.logout'), destroy_user_session_path, method: :delete %></li>
-        <% if current_user.try(:admin?) %>
-        <%= link_to t('views.header.adminpage'), rails_admin_path  %>
-        <% else %>
-        <li><%= link_to t('views.header.admin_guest_login'), guests_admin_guest_sign_in_path, method: :post %></li>
-        <% end %>
-    <% else %>
-      <li><%= link_to t('views.header.sign_in'), new_user_registration_path %></li>
-       <li> <%= link_to t('views.header.login'), new_user_session_path %></li>
-      <li><%= link_to t('views.header.guest_login'), guests_guest_sign_in_path, method: :post %></li>
-    <% end %>
-  
-    <li class='message'>
     <%= link_to  t('views.header.message-room'),conversations_path %>
-     <li> 
-       <%= form_with url: posts_path, method: :get, local: true do |form| %>
-       <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %> 
-       <%= form.submit 'ジャンル別検索', name: nil %></li>
-       <% end %>
-     </li>
     </ul>
   </div>
-   <div id='hamburger'>
-     <div class = 'icon'>
-       <span></span>
-       <span></span>
-       <span></span>
-      </div>
-   </div>
-
 </header>
-
-<script>
-  $('#hamburger').on('click', function(){
-      $('.icon').toggleClass('close');
-      $('.sm').slideToggle();
-  });
-</script>

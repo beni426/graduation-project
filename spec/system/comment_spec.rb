@@ -10,6 +10,7 @@ RSpec.describe 'コメント機能', type: :system do
                 fill_in 'パスワード', with: 'password'
                 click_button 'Log in'
                 click_on 'ホーム'
+               
                 click_on 'Ruby'
                 fill_in 'comment_content', with: 'message'
                 click_on '登録する'
@@ -45,6 +46,7 @@ RSpec.describe 'コメント機能', type: :system do
                 fill_in 'comment_content', with: 'message'
                 click_on '登録する'
                 find('.fa-trash-alt').click
+                sleep 2
                 expect(page.driver.browser.switch_to.alert.text).to eq  "本当に削除しますか?"
             end
          end

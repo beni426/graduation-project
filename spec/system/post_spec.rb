@@ -19,11 +19,11 @@ RSpec.describe Post, type: :system do
      context '投稿を新規作成場合' do
        it '作成した投稿を一覧画面に表示される' do
          visit posts_path
-         binding.pry
-         click_on 'ブログ投稿'
+       
+         click_on 'ブログ投稿',match: :first
          fill_in 'タイトル', with: 'Ruby'
          fill_in '説明', with: 'ここが内容です'
-         select 'life-1', from: 'label_id'
+        #  select 'life-1', from: 'label_id'
          page.attach_file("#{Rails.root}/spec/fixtures/1.jpg") do
           page.find('#post_image').click
          end 
@@ -32,84 +32,84 @@ RSpec.describe Post, type: :system do
          expect(page).to have content 'test'
       end
      end
-#     context '任意の記事の詳細画面に遷移した場合' do
-#       it '作成した投稿を詳細ページに表示される' do
-#             visit post_path(1)
-#             expect(page).to have_content 'ここが内容です'
-#           end
-#         end
-#     context '自分が投稿した記事の詳細画面に遷移した場合' do
-#       it '作成した投稿を編集できること' do
-#           visit post_path(1)
+    context '任意の記事の詳細画面に遷移した場合' do
+      it '作成した投稿を詳細ページに表示される' do
+            visit post_path(1)
+            expect(page).to have_content 'ここが内容です'
+          end
+        end
+    context '自分が投稿した記事の詳細画面に遷移した場合' do
+      it '作成した投稿を編集できること' do
+          visit post_path(1)
         
-#            click_on '編集'
-#            expect(edit_post_path(1)).to eq edit_post_path(1)
-#       end
-#     end
-#     context '自分が投稿した記事の詳細画面に遷移した場合' do
-#        it '作成した投稿を削除できること' do
-#           visit post_path(1)
-#           click_on '削除'
-#           expect(page.driver.browser.switch_to.alert.text).to eq  '本当に削除していいですか？' 
-#       end
-#     end 
-  #  describe '投稿の詳細ページ各機能' do
-#     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
-#       it '投稿をストックできること' do
-#          visit post_path(2)
-#          click_on 'ストック'
-#          expect(page).to have_content 'user2さんの愚痴をストックしました' 
-#       end
-#     end 
-#     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
-#       it '投稿をストックを解除できること' do
-#        visit post_path(2)
-#        click_on 'ストック'
-#        sleep 2
-#        click_on 'たのしい'
-#        expect(page).to have_content 'ストックを解除する' 
-#      end
-#     end
-#     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
-#       it '投稿者のマイページをみることできる' do
-#           visit post_path(1)
-#            click_on 'user9'
-#            expect(user_path(1)).to eq user_path(1)
-#       end
-#      end 
-#     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
-#       it '投稿者にメッセージを送ることできる' do
-#         visit post_path(2)
-#         click_on 'メッセージ'
-#           expect(conversation_path(1)).to eq conversation_path(1)
-#       end
-#     end 
-#     context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
-#       it 'コメントを送ることできる' do
-#         visit post_path(1)
-#         fill_in 'comment_content', with: 'nice'
-#         click_on '登録する'
-#         expect(page).to have_content 'nice'
-#       end
-#     end 
-#     context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
-#      it 'コメントを編集ことできる' do
-#        visit post_path(1)
-#        fill_in 'comment_content', with: 'nice'
-#        click_on '登録する'
-#        find('.fa-edit').click
-#        expect(page).to have_button '更新する'
-#      end
-#     end 
-#     context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
-#      it 'コメントを削除ことできる' do
-#        visit post_path(1)
-#        fill_in 'comment_content', with: 'nice'
-#        click_on '登録する'
-#        find('.fa-trash-alt').click
-#        expect(page.driver.browser.switch_to.alert.text).to eq  "本当に削除しますか?"
-#       end
-#      end 
-    #  end
+           click_on '編集'
+           expect(edit_post_path(1)).to eq edit_post_path(1)
+      end
+    end
+    context '自分が投稿した記事の詳細画面に遷移した場合' do
+       it '作成した投稿を削除できること' do
+          visit post_path(1)
+          click_on '削除'
+          expect(page.driver.browser.switch_to.alert.text).to eq  '本当に削除していいですか？' 
+      end
+    end 
+   describe '投稿の詳細ページ各機能' do
+    context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
+      it '投稿をストックできること' do
+         visit post_path(2)
+         click_on 'ストック'
+         expect(page).to have_content 'user2さんの愚痴をストックしました' 
+      end
+    end 
+    context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
+      it '投稿をストックを解除できること' do
+       visit post_path(2)
+       click_on 'ストック'
+       sleep 2
+       click_on 'たのしい'
+       expect(page).to have_content 'ストックを解除する' 
+     end
+    end
+    context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
+      it '投稿者のマイページをみることできる' do
+          visit post_path(1)
+           click_on 'user9'
+           expect(user_path(1)).to eq user_path(1)
+      end
+     end 
+    context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
+      it '投稿者にメッセージを送ることできる' do
+        visit post_path(2)
+        click_on 'メッセージ'
+          expect(conversation_path(1)).to eq conversation_path(1)
+      end
+    end 
+    context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
+      it 'コメントを送ることできる' do
+        visit post_path(1)
+        fill_in 'comment_content', with: 'nice'
+        click_on '登録する'
+        expect(page).to have_content 'nice'
+      end
+    end 
+    context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
+     it 'コメントを編集ことできる' do
+       visit post_path(1)
+       fill_in 'comment_content', with: 'nice'
+       click_on '登録する'
+       find('.fa-edit').click
+       expect(page).to have_button '更新する'
+     end
+    end 
+    context 'ユーザーが投稿した記事の詳細画面に遷移した場合' do
+     it 'コメントを削除ことできる' do
+       visit post_path(1)
+       fill_in 'comment_content', with: 'nice'
+       click_on '登録する'
+       find('.fa-trash-alt').click
+       expect(page.driver.browser.switch_to.alert.text).to eq  "本当に削除しますか?"
+      end
+     end 
+     end
   end
 end
