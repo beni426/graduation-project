@@ -55,6 +55,8 @@ ja:
       guest_login: 'ゲストログイン（閲覧用)'
       login: 'ログイン'
       sign_in: '新規登録'
+      Signup: '新規登録'
+      update: '更新'
       admin_guest_login: 'ゲスト管理者ログイン（閲覧用）'
       message-room: 'チャットルーム'
     post:

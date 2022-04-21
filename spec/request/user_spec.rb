@@ -61,12 +61,12 @@ RSpec.describe "UserAuthentications", type: :request do
   end
   describe 'GET #show' do
     
-    context 'ユーザーが存在しない場合' do
-      it 'エラーが発生すること' do
-        user_id = user.id
-        user.destroy
-        expect{ get "/users/#{user_id}" }.to raise_error ActiveRecord::RecordNotFound
-      end
-    end
+    # context 'ユーザーが存在しない場合' do
+    #   it 'エラーが発生すること' do
+    #     user_id = user.id
+    #     user.destroy
+    #     expect{ get "/users/#{user_id}" }.to raise_error ActiveRecord::RecordNotFound
+    #   end
+    # end
   end
 end

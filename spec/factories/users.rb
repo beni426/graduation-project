@@ -17,4 +17,13 @@ FactoryBot.define do
       admin {'false'}
      
     end
+    factory :user_third, class: User do
+      name { "admin1" }
+      email { "admin1@example.com" }
+      image {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/user_default.png'))}
+      password { "password" }
+      password_confirmation {"password"}
+      admin {'true'}
+     
+    end
 end

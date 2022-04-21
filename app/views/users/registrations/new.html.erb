@@ -30,9 +30,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t('views.header.Signup') %>
   </div>
 <% end %>
 
-<%= link_to "Log in", new_session_path(resource_name) %>
+<%= link_to t('views.header.login'), new_session_path(resource_name) %>
 </div>

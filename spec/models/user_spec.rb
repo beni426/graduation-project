@@ -7,6 +7,18 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid 
     end
   end
+  context 'ユーザーのnameが空の場合' do
+    it "is invalid without a name" do
+        user = User.new(
+         name:'',
+         email: "user1@user.com",
+         password: "user1pass",
+         password_confirmation: 'user1pass',
+         image: nil
+        )
+         expect(user).not_to be_valid
+        end
+   end
     context 'ユーザーのimageが空の場合' do
      it "is valid with a email and password" do
          user = User.new(
@@ -19,6 +31,18 @@ RSpec.describe User, type: :model do
           expect(user).to be_valid
          end
     end
+    context 'ユーザーのemailが被った場合' do
+      it "is invalid with a email that has been used" do
+          user = User.new(
+           name:'username',
+           email: "user@email.com",
+           password: "user1pass",
+           password_confirmation: 'user1pass',
+           image: nil
+          )
+           expect(user).not_to be_valid
+          end
+     end
    
  
 
