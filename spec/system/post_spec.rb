@@ -13,20 +13,20 @@ RSpec.describe Post, type: :system do
     before do
      sign_in user
     end
-    #  context '投稿を新規作成場合' do
-    #    it '作成した投稿を一覧画面に表示される' do
-    #      visit posts_path
-    #      click_on 'ブログ投稿'
-    #      fill_in 'タイトル', with: 'Ruby'
-    #      fill_in '説明', with: 'ここが内容です'
-    #      check label.genre
-    #      page.attach_file("#{Rails.root}/spec/fixtures/1.jpg") do
-    #       page.find('#post_image').click
-    #      end 
-    #      click_on '登録'
-    #      expect(page).to have content 'ここが内容です'
-    #   end
-    #  end
+     context '投稿を新規作成場合' do
+       it '作成した投稿を一覧画面に表示される' do
+         visit posts_path
+         click_on 'ブログ投稿'
+         fill_in 'タイトル', with: 'Ruby'
+         fill_in '説明', with: 'ここが内容です'
+         check label.genre
+         page.attach_file("#{Rails.root}/spec/fixtures/1.jpg") do
+          page.find('#post_image').click
+         end 
+         click_on '登録'
+         expect(page).to have content 'ここが内容です'
+      end
+     end
     context '任意の記事の詳細画面に遷移した場合' do
       it '作成した投稿を詳細ページに表示される' do
             visit post_path(1)
@@ -41,13 +41,13 @@ RSpec.describe Post, type: :system do
            expect(edit_post_path(1)).to eq edit_post_path(1)
       end
     end
-    # context '自分が投稿した記事の詳細画面に遷移した場合' do
-    #    it '作成した投稿を削除できること' do
-    #       visit post_path(1)
-    #       click_on '削除'
-    #       expect(page.driver.browser.switch_to.alert.text).to eq  '本当に削除していいですか？' 
-    #   end
-    # end 
+    context '自分が投稿した記事の詳細画面に遷移した場合' do
+       it '作成した投稿を削除できること' do
+          visit post_path(1)
+          click_on '削除'
+          expect(page.driver.browser.switch_to.alert.text).to eq  '本当に削除していいですか？' 
+      end
+    end 
    describe '投稿の詳細ページ各機能' do
     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
       it '投稿をストックできること' do
