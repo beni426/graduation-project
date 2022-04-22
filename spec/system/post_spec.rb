@@ -9,11 +9,11 @@ RSpec.describe Post, type: :system do
   # let!(:post_third) { FactoryBot.create(:post_third, user_id: user_second.id) }
    let!(:label) {create(:label)}
    let(:labelling){create(post_id: Post.last.id, label_id: Label.last.id)}
-   describe '新規投稿機能' do
+  describe '新規投稿機能' do
     before do
      sign_in user
     end
-     context '投稿を新規作成場合' do
+    context '投稿を新規作成場合' do
        it '作成した投稿を一覧画面に表示される' do
          visit posts_path
          click_on 'ブログ投稿'
@@ -29,10 +29,10 @@ RSpec.describe Post, type: :system do
      end
     context '任意の記事の詳細画面に遷移した場合' do
       it '作成した投稿を詳細ページに表示される' do
-            visit post_path(1)
-            expect(page).to have_content 'ここが内容です'
-          end
-        end
+          visit post_path(1)
+          expect(page).to have_content 'ここが内容です'
+      end
+    end
     context '自分が投稿した記事の詳細画面に遷移した場合' do
       it '作成した投稿を編集できること' do
           visit post_path(1)
@@ -48,7 +48,7 @@ RSpec.describe Post, type: :system do
           expect(page.driver.browser.switch_to.alert.text).to eq  '本当に削除していいですか？' 
       end
     end 
-   describe '投稿の詳細ページ各機能' do
+  describe '投稿の詳細ページ各機能' do
     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
       it '投稿をストックできること' do
          visit post_path(2)

@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_post, only: %i[create edit update]
+  
   def create
     @comment = @post.comments.build(comment_params)
     respond_to do |format|
       if @comment.save
         format.js { render :index }
       else
-        format.html { redirect_to post_path(@post), notice: '投稿できませんでした...' }
+        format.html { redirect_to post_path(@post), notice: 'コメントできませんでした...' }
       end
     end
   end

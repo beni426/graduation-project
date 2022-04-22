@@ -13,7 +13,7 @@ RSpec.describe Conversation, type: :system do
       fill_in "パスワード", with: 'password'
       click_on "Log in"
     end
-     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
+    context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
        it '投稿者にメッセージを送ることできる' do
         visit post_path(2)
         click_on 'メッセージ'
@@ -21,9 +21,9 @@ RSpec.describe Conversation, type: :system do
         click_button 'メッセージを送る'
         expect(page).to have_content 'this is a test'
         end
-     end 
+    end 
     context '他のユーザーが投稿した記事の詳細画面に遷移した場合' do
-        it 'メッセージを確認することできる' do
+      it 'メッセージを確認することできる' do
         visit post_path(2)
         click_on 'メッセージ'
         fill_in 'message[body]',with: 'this is a test'
@@ -36,7 +36,7 @@ RSpec.describe Conversation, type: :system do
         click_on 'チャットルーム'
         click_link 'user2'
         expect(page).to have_content 'this is a test'
-       end
+      end
     end 
   end
 end

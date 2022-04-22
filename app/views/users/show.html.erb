@@ -24,7 +24,7 @@
 
  <p> 今日のスッキリ<p>
    <div class='energy'>
-    <%= bar_chart Vote.group(:user_id).group(:value).count , xtitle: "スキッリバー",id: "chart-1", width: "300px", height: "100px",colors:  "grey" %> 
+    <%= bar_chart Vote.group(:user_id).group(:value).count , xtitle: "スッキリバー",id: "chart-1", width: "300px", height: "100px",colors:  "green" %> 
    </div> 
   </div>
 <div class='post-block'>
@@ -58,7 +58,7 @@
 </div>
 <div class='stock-block'>
 <% if user_signed_in? && @user == current_user %>
-<h1><%= @user.name %>ストックした投稿</h1>
+<h1><%= @user.name %>さんストックした投稿</h1>
 <% if @stock_list.present? %>
 <div class="posts-form">
   <ul class="post-list">

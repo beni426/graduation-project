@@ -8,24 +8,24 @@ RSpec.describe Comment, type: :model do
     @comment = FactoryBot.build(:comment,post_id:post.id)
     sleep 0.2
   end
-    context 'コメントを保存できない場合' do
-      it "コメントが空では投稿できない" do
-        @comment.content = ''
-        @comment.valid?
-        expect(@comment.errors.full_messages).to include "Contentを入力してください"
-      end
+   context 'コメントを保存できない場合' do
+     it "コメントが空では投稿できない" do
+      @comment.content = ''
+      @comment.valid?
+      expect(@comment.errors.full_messages).to include "Contentを入力してください"
+     end
 
-      it "ユーザーがログインしていなければコメントできない" do
-        @comment.post_id= nil
-        @comment.valid?
-        expect(@comment.errors.full_messages).to include "Postを入力してください"
-      end
+     it "ユーザーがログインしていなければコメントできない" do
+      @comment.post_id= nil
+      @comment.valid?
+      expect(@comment.errors.full_messages).to include "Postを入力してください"
+     end
 
-      it "投稿したものがなければコメントできない" do
+     it "投稿したものがなければコメントできない" do
         @comment.post_id = nil
         @comment.valid?
         expect(@comment.errors.full_messages).to include "Postを入力してください"
       end
     end
-  end
+end
 
