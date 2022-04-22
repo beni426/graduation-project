@@ -126,16 +126,19 @@ div.actions {
   color: green; }
 
 .field_with_errors {
+  margin-right: 29%;
   padding: 2px;
-  background-color: red;
-  display: table; }
+  border: solid 0.3px rgb(163, 72, 72);
+  margin-left: 29%; }
 
 #error_explanation {
   width: 450px;
   border: 2px solid red;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0; }
+  background-color: #f0f0f0; 
+  margin-left: 18%;
+}
 
 #error_explanation h2 {
   text-align: left;
@@ -148,6 +151,7 @@ div.actions {
 
 #error_explanation ul li {
   font-size: 12px;
+  text-align: center;
   list-style: square; }
 .main{
   flex:1
@@ -245,6 +249,12 @@ div.actions {
 }
 .edit-button{
   margin-right: 10%;
+}
+.fa-edit {
+  background: blue;
+}
+.fa-trash-alt{
+  background: blue;
 }
 // vote
 .label-title{
@@ -489,7 +499,21 @@ body{
 .table{
   background: #3d3a3a;
   width: 60%;
- 
   margin-right: 20%;
+  margin-left: 20%;
 }
+.message_room{
+  background: #eee;
+  text-align: center;
+  margin-right: 20%;
+  margin-left: 20%;
+  border-radius: 5px;
+}
+// user.new error
+.field_with_errors{
+  text-align: center;
+
+}
+
+
 

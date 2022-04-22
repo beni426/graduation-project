@@ -4,6 +4,7 @@ ja:
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
+        not_saved: "エラーが発生したため投稿は保存されませんでした:"
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"

@@ -18,7 +18,7 @@ RSpec.describe Post, type: :system do
     end
     context ' スッキリ投票を押す' do
       it ' ユーザーがスッキリ投票できる' do
-        click_link '好奇心'
+        click_link '投票'
         click_on 'スッキリ',match: :first
         expect(page).to have_content '投票をしました！'
       end
