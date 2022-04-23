@@ -58,4 +58,4 @@ ja:
       not_saved:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
-      not_saved_post: "エラーが発生したため投稿は保存されませんでした:"
+      not_saved_post: "が発生したため投稿は保存されませんでした:"
