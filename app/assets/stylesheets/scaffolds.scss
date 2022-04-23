@@ -128,16 +128,17 @@ div.actions {
 .field_with_errors {
   margin-right: 29%;
   padding: 2px;
-  border: solid 0.3px rgb(163, 72, 72);
+  border: solid 0.3px rgb(212, 222, 25);
   margin-left: 29%; }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid rgb(209, 235, 11);
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0; 
-  margin-left: 33%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 #error_explanation h2 {
@@ -146,8 +147,8 @@ div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px -7px 0;
-  background-color: #c00;
-  color: #fff; }
+  background-color: rgb(101, 98, 98);
+  color: rgb(220, 224, 17); }
 
 #error_explanation ul li {
   font-size: 12px;
