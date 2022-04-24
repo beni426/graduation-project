@@ -1,5 +1,5 @@
 body {
-  background:linear-gradient(to bottom,rgb(103, 96, 96),rgb(38, 38, 49));
+  background-image :radial-gradient(rgb(215, 224, 223),rgba(8, 16, 15, 0.641));
   color: rgb(63, 59, 59);
   min-height: 100vh;
   display: flex;
@@ -18,12 +18,18 @@ pre {
   font-size: 11px; }
 header{
     margin-top: 0;
-    background:linear-gradient(to left,rgb(78, 74, 74),rgb(144, 144, 146));
+    background:linear-gradient(to left,rgb(99, 98, 98),rgb(38, 38, 46));
     height: 70px;
+    display: flex;
     
+}
+.back-design{
+  background-image: url(background8.PNG);
 }
 .navbar{
     width: 100%;
+    margin-right: 0px;
+
   }
 .navbar li{
   list-style: none;
@@ -32,7 +38,7 @@ header{
   margin: 10px;
 }
 .top_header image{
-  background-color: rgb(133, 175, 189);
+  background-color: rgb(37, 91, 7);
 }
 a {
   color: hsl(56, 15%, 82%);
@@ -52,6 +58,7 @@ th {
   padding:  5px;
   border-style: none;
   vertical-align: middle;
+  border-radius: 50px;
 }
 
 td {
@@ -61,12 +68,101 @@ div.field,
 div.actions {
   text-align: center;
   margin-bottom: 10px; }
-  // index
+  * {
+    box-sizing: border-box;
+  }
+
+  
+.sm {
+    display: none;
+  }
+
+.pc{
+  margin-left: auto;
+}
+
+
+  
+  
+  /**********************************　
+  以下、ハンバーガーメニューの設定　
+  ************************************/
+  
+  @media (max-width: 1122px) {
+  
+    .pc {
+      display: none;
+    }
+  
+    #hamburger {
+      background-color: transparent;
+      position: relative;
+      cursor: pointer;
+      margin: 0 0 0 auto;
+      height: 60px;
+      width: 60px;
+    }
+  
+    .icon span {
+      position: absolute;
+      left: 15px;
+      width: 30px;
+      height: 4px;
+      background-color: white;
+      border-radius: 8px;
+      transition: ease 0.75s;
+    }
+  
+    .icon span:nth-of-type(1) {
+      top: 16px;
+    }
+    .icon span:nth-of-type(2) {
+      top: 28px;
+    }
+    .icon span:nth-of-type(3) {
+      bottom: 16px;
+    }
+  
+    .close span:nth-of-type(1) {
+      transform: rotate(45deg);
+      top: 28px;
+    }
+  
+    .close span:nth-of-type(2) {
+      opacity: 0;
+    }
+  
+    .close span:nth-of-type(3) {
+        transform: rotate(-45deg);
+        top: 28px;
+    }
+  
+    .sm {
+        top: 60px;
+        left: 0px;
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(34, 49, 52, 0.9);
+    }
+  
+    ul {
+      flex-direction: column;
+    }
+  
+    a {
+      text-align: center; 
+      border-top: solid 0.5px rgba(255, 255, 255, 0.6);
+    }
+  }
+// index
 .post-form{
   text-align: center;
+  margin-top: 5%;
   border-color: rgb(75, 80, 80);
   border:1px solid  rgb(246, 246, 248);
-  background-color: rgb(183, 183, 190);
+  background-color:rgb(216, 189, 161);
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
@@ -91,13 +187,13 @@ div.actions {
 
 .post-list-item{
   display: flex;
-  background:linear-gradient(to left,rgb(141, 139, 139),rgb(218, 218, 243));
-  margin: 10px;
+  background:linear-gradient(to left,rgb(138, 103, 103),rgb(43, 43, 79));
+  margin: 20px;
 
   width: 100%;
   height: 100px;
   border-radius: 3px;
-  box-shadow: 0 0 5px 6px #ebe2e1;
+  box-shadow: 0 0 5px 6px #eceef1;
   -webkit-animation:div 1s ease ;
    animation:div 1s ease ;
 }
@@ -121,6 +217,10 @@ div.actions {
   background: rgb(144, 207, 185);
   cursor: pointer;
 }
+.detail-icon{
+  margin-left: auto;
+}
+
 
 #notice {
   color: green; }
@@ -160,11 +260,11 @@ div.actions {
 
 .main-footer{
   height: 40px;
-  background:linear-gradient(to left,rgb(128, 123, 123),rgb(109, 109, 138));
+  background:linear-gradient(to left,rgb(99, 98, 98),rgb(38, 38, 46));
   text-align: center;
   width: 100%;
   vertical-align: middle;
- 
+  color:#f0f0f0;
   bottom: 0;
 }
 .foot{
@@ -191,7 +291,26 @@ div.actions {
   border: #b1acac solid 1px;
   border-radius: 5px;
 }
-
+.page{
+  padding: 3px;
+  border: #d9cdcd 1px solid;
+}
+.next{
+  padding: 3px;
+  border: #d9cdcd 1px solid;
+}
+.last{
+  padding: 3px;
+  border: #d9cdcd 1px solid;
+}
+.first{
+  padding: 3px;
+  border: #d9cdcd 1px solid;
+}
+.prev{
+  padding: 3px;
+  border: #d9cdcd 1px solid;
+}
 
 // confirm 用
 .form-post-image{
@@ -256,16 +375,33 @@ div.actions {
 .comment-list-layout{
   display: flex;
   border-bottom: solid 1px grey;
+}
+.post-form-comment{
+  text-align: center;
+  border-color: rgb(75, 80, 80);
+  border:1px solid  rgb(246, 246, 248);
+  background-color:rgb(216, 189, 161);
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 40%;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border-bottom: 1px solid gray;
+  display: inline-block;
 
- 
 }
 .comment-contents{
   margin-left: 10px;
   padding: 10px;
   float:right;
 }
+.comment-contents1{
+  margin-left: auto;
+  padding: 10px;
+}
 .edit-button{
-  margin-right: 10%;
+  margin-left: auto;
 }
 .fa-edit {
   background: blue;
@@ -323,9 +459,8 @@ div.actions {
 
 }
 .vote-button{
-  position:absolute;
   background-color: rgb(146, 146, 216);
-  left: 70%;
+  margin-left: auto;
 }
 .post_block_bottom {
   box-shadow: rgb(190, 188, 188);
