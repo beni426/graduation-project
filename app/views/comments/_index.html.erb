@@ -5,7 +5,7 @@
       <li class='comment-list-layout'>
  
         <div class='comment-contents'><%= comment.content %></div>
-        <div class='comment-contents'><%= link_to(content_tag(:i, "", class: "far fa-edit"),edit_post_comment_path(post, comment), remote: true) %></div>
+        <div class='comment-contents1'><%= link_to(content_tag(:i, "", class: "far fa-edit"),edit_post_comment_path(post, comment), remote: true) %></div>
         <div class='comment-contents'><%= link_to(content_tag(:i, "", class: "far fa-trash-alt"),post_comment_path(comment.post_id, comment.id),method: :delete, remote: true,
                                         data: { confirm: "本当に削除しますか?"}) %></div>
       </li>

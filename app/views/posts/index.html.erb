@@ -18,12 +18,15 @@
         </div>
   
         <div class='post_block_bottom'>
-            <%= post.title %>
-            <%= time_ago_in_words(post.created_at) %>
+            <%= post.title %><br><br>
+            <%= time_ago_in_words(post.created_at)+'ago' %>
         </div>
        </a>
         <div class='post_block_detail'>
            <%= post.description %>
+        </div>
+        <div class='detail-icon'>
+        <%= link_to(content_tag(:i, "", class: "fa fa-eye",style:"font-size: 1.6em;"),post_path(post.id)) %>
         </div>
        
        <% end %>
