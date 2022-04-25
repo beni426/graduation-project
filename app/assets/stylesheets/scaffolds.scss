@@ -174,7 +174,7 @@ div.actions {
 }
 .post-list{
   display: block;
-  margin-left: 20%;
+  margin-left: 16%;
   margin-right: 20%;
   list-style: none;
   
@@ -622,14 +622,18 @@ body{
 }
 // user.session
 .login-form{
-  background: #f0f0f0;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
-  border: solid 1px grey;
+  background: #dde2e3;
+  margin-top: 2%;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+  border: solid 1px rgb(236, 225, 225);
   border-radius: 5px;
   text-align: center;
-  box-shadow: rgb(183, 181, 181);
+  box-shadow: rgb(228, 222, 222) 3px;
+}
+.login_button{
+  background: #3d3a3a;
 }
 // conversation.index
 .table{
