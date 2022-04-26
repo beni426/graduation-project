@@ -63,7 +63,8 @@ ja:
     post:
       vote: '投票'
       roast: '愚痴'
-      refresh: 'スッキリ'   
+      refresh: 'スッキリ' 
+      voted: '投票済'  
 
       
 

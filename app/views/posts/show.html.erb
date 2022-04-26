@@ -29,7 +29,7 @@
        <%= @post.title %><br>
      </div>
      <div class='label-genre'> <%= form.hidden_field :label %>
-      <strong>Genre:</strong>
+      <strong><%= t('activerecord.attributes.label.genre')%> :</strong>
        <% @post.labels.each do |label| %>
        <%= label.genre %>
        <%end%>

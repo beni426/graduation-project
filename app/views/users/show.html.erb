@@ -24,7 +24,7 @@
 
  <p> 今日のスッキリ<p>
    <div class='energy'>
-    <%= bar_chart Vote.group(:user_id).group(:value).count , xtitle: "スッキリバー",id: "chart-1", width: "300px", height: "100px",colors:  "green" %> 
+    <%= bar_chart @array_data, xtitle: '投票総数',ytitle: 'ポスト'%> 
    </div> 
   </div>
 <div class='post-block'>
