@@ -4,7 +4,7 @@
      <ul>
        <li><%= link_to t('views.header.top'),top_path %></li>
        <li><%= link_to t('views.header.home'),posts_path %></li>
-      <li> <%= link_to t('views.header.vote') , vote_path %></li>
+      <li> <%= link_to t('views.header.vote') , votes_path %></li>
     <% if user_signed_in? %>
       <li><%= link_to t('views.header.blog'), new_post_path %></li>
       <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>
@@ -40,7 +40,7 @@
      </li>
        <li><%= link_to t('views.header.top'),top_path %></li>
        <li><%= link_to t('views.header.home'),posts_path %></li>
-       <li><%= link_to t('views.header.vote') , vote_path %></li>
+       <li><%= link_to t('views.header.vote') , votes_path %></li>
    <% if user_signed_in? %>
       <li><%= link_to t('views.header.blog'), new_post_path %></li>
       <li><%= link_to t('views.header.mypage'), user_path(current_user.id) %></li>

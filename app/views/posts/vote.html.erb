@@ -23,20 +23,28 @@
         </div>
         <% if user_signed_in? %>
         <div class='vote-button'>
-         <%= pluralize(post.votes.count, "票") %>
+        <%= pluralize(post.votes.size, "票") %>
+         <% if post.vote_users.exclude?(current_user) %>
+         
          <%= button_to t('views.post.refresh'), vote_up_post_path(post.id), method: :post %>
+         <% else %>
+          <div class='voted'>
+           <p><%= t('views.post.voted') %></p>
+          </div>
+         <% end %>
          </div>
          <% end %>
        </li>
        <div class="post_item-description">
 
       </div>
-    <% end %>  
+     <% end %>  
     <% end %>
   </ul>
   <%= paginate @posts %>
 </div>
- <div class='chart'>
-   <%= column_chart Vote.group(:post_id).group(:value).count,label: "Value", ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%> 
- </div>
+  <div class='chart'>
+   <%= column_chart Vote.limit(10).group(:post_id).group(:value).count, ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%> 
+  </div>
+
 

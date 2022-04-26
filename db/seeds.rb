@@ -10,9 +10,9 @@
     Post.create!(user_id: User.last.id, title: "post#{n}", description: "content#{n}",
           image: File.open("./app/assets/images/choice-8.jpg"),
           status: "public")
-    Label.create!(genre: "life#{n}")
+    Label.create!(genre: "生活#{n}")
     Labelling.create!(post_id: Post.last.id, label_id: Label.last.id)
 end
-Label.create!([{ genre: 'life' }, { genre: 'money' }, { genre: 'work' }, { genre: 'culture' }, { genre: 'education' }, { genre: 'sports' },
-    { genre: 'game' }, { genre: 'law' }, { genre: 'politic' }, { genre: 'economy' }, { genre: 'technology' }])
+Label.create!([{ genre: '生活' }, { genre: 'お金' }, { genre: '仕事' }, { genre: '文化' }, { genre: '教育' }, { genre: 'スポーツ' },
+    { genre: 'ゲーム' }, { genre: '法律' }, { genre: '政治' }, { genre: '経済' }, { genre: '科学技術' }])
 

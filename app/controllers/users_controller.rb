@@ -10,8 +10,17 @@ class UsersController < ApplicationController
     @post = @user.posts
     stocks = Stock.where(user_id: current_user.id).pluck(:post_id)
     @stock_list = Post.find(stocks)
+    @array_data = []
+    count=0
+    @hash_data =  @user.posts.map {|post| {name: post.title, data: post.votes.count}}
+    @hash_data.each_with_index do |_k,i|
+    hash_graph = {}
+    hash_graph[:name] = @post.map {|post| post.title}[i]
+    hash_graph[:data] = @hash_data[i]
+     @array_data[i] =hash_graph
+       count = i
+    end
   end
-
   def stocks
     @post = @user.posts
     stocks = Stock.where(user_id: current_user.id).pluck(:post_id)

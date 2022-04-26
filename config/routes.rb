@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       post :vote_up
     end
   end
-  get '/vote' => 'posts#vote'
+  get '/votes' => 'posts#vote'
   get '/top' => 'posts#top'
   resources :stocks, only: %i[create destroy]
   resources :users, only: [:show] do

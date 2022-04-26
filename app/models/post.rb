@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :image, presence: true
   enum status: { public: 0, private: 1 }, _prefix: true
   has_many :votes, dependent: :destroy
+  has_many :vote_users, through: :votes,source: :user
   mount_uploader :image, ImageUploader
 
   

@@ -57,9 +57,9 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    @post = Post.find(params[:id])
-    @post.votes.create
-    redirect_to vote_path, notice: '投票をしました！'
+    vote = current_user.votes.create(post_id: params[:id])
+    redirect_to votes_path, notice: '投票をしました！'
+ 
   end
 
   def top; end
@@ -93,4 +93,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :image, :image_cache, { label_ids: []}, :status)
   end
+  # def vote_params
+  #   params.permit(:user_id, :post_id, :value)
+  # end
+
 end
