@@ -1,5 +1,5 @@
 body {
-  background-image :radial-gradient(rgb(215, 224, 223),rgba(8, 16, 15, 0.641));
+  background-image: url(background0.PNG);
   color: rgb(63, 59, 59);
   min-height: 100vh;
   display: flex;
@@ -58,7 +58,12 @@ th {
   padding:  5px;
   border-style: none;
   vertical-align: middle;
-  border-radius: 50px;
+  border-radius: 50px;}
+
+h1{
+  background: rgb(98, 93, 93);
+  color: goldenrod;
+  margin-top: 0;
 }
 
 td {
@@ -162,7 +167,7 @@ div.actions {
   margin-top: 5%;
   border-color: rgb(75, 80, 80);
   border:1px solid  rgb(246, 246, 248);
-  background-color:rgb(216, 189, 161);
+  background-color: #a1a09f;
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
@@ -171,6 +176,7 @@ div.actions {
   padding: 10px 10px;
   border-bottom: 1px solid gray;
   display: inline-block;
+  box-shadow: 0 0 5px 6px #eceef1;
 }
 .post-list{
   display: block;
@@ -474,14 +480,14 @@ body{
   position: relative;
 }
 .container1{
-  border: 1px solid rgb(111, 106, 106);
+  border: 0px solid rgb(111, 106, 106);
   margin-top: 0px;
   margin-bottom: 0px;
   width: 60%;
   margin-left: 20%;
   margin-right:20%;
   height: 700px;
-  background-color: rgb(36, 34, 34);
+ 
 }
 .autotype{
   font-size: 4rem;
@@ -638,7 +644,7 @@ body{
 }
 // user.session
 .login-form{
-  background: #dde2e3;
+  background-image: linear-gradient(40deg, #f6fafd, gray);
   margin-top: 2%;
   width: 30%;
   margin-left: 35%;
@@ -646,7 +652,7 @@ body{
   border: solid 1px rgb(236, 225, 225);
   border-radius: 5px;
   text-align: center;
-  box-shadow: rgb(228, 222, 222) 3px;
+  box-shadow: 0 0 5px 6px #eceef1;
 }
 .login_button{
   background: #6b6868;
