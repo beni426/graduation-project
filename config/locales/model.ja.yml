@@ -34,6 +34,18 @@ ja:
         remember_created_at: ログインを記憶
       label:
         genre: ジャンル
+        life: 生活
+        money: お金
+        education: 教育
+        work: 仕事
+        culture: 文化
+        sports: スポーツ
+        game: ゲーム
+        law: 法律
+        politic: 政治
+        economy: 経済
+        technology: 科学技術
+
   views:
     pagination:
       first: 最初

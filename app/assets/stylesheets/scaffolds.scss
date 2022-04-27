@@ -228,12 +228,12 @@ div.actions {
 .field_with_errors {
   margin-right: 29%;
   padding: 2px;
-  border: solid 0.3px rgb(212, 222, 25);
+  border: solid 0.3px rgb(79, 86, 47);
   margin-left: 29%; }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid rgb(209, 235, 11);
+  border: 2px solid rgb(85, 83, 86);
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0; 
@@ -247,8 +247,8 @@ div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px -7px 0;
-  background-color: rgb(101, 98, 98);
-  color: rgb(220, 224, 17); }
+  background-color: rgb(195, 197, 162);
+  color: rgb(35, 20, 20); }
 
 #error_explanation ul li {
   font-size: 12px;
@@ -275,6 +275,21 @@ div.actions {
   justify-content: center;
   padding: 4px;
   margin: 3px;
+  
+}
+.page{
+  border: #b1acac solid 1px;
+
+  border-radius: 5px;
+}
+.next{
+  border: #b1acac solid 1px;
+
+  border-radius: 5px;
+}
+.last{
+  border: #b1acac solid 1px;
+  border-radius: 5px;
 }
 .page{
   padding: 3px;
@@ -347,6 +362,7 @@ div.actions {
   background-color: rgb(93, 91, 91);
   float: right;
 }
+
 .comments_space{
   background-color: rgb(255, 234, 127);
   width: 70%;
