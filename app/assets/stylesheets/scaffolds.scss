@@ -266,7 +266,7 @@ div.actions {
 
 .main-footer{
   height: 40px;
-  background:linear-gradient(to left,rgb(99, 98, 98),rgb(38, 38, 46));
+  background:linear-gradient(to left,rgb(149, 145, 145),rgb(38, 38, 46));
   text-align: center;
   width: 100%;
   vertical-align: middle;
@@ -386,11 +386,12 @@ div.actions {
   text-align: center;
   border-color: rgb(75, 80, 80);
   border:1px solid  rgb(246, 246, 248);
-  background-color:rgb(216, 189, 161);
+  background-color: #a1a09f;
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
   height: 40%;
+  box-shadow: 0 0 5px 6px #eceef1;
   border-radius: 5px;
   padding: 10px 10px;
   border-bottom: 1px solid gray;
