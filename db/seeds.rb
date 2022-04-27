@@ -13,6 +13,6 @@
     Label.create!(genre: "生活#{n}")
     Labelling.create!(post_id: Post.last.id, label_id: Label.last.id)
 end
-Label.create!([{ genre: '生活' }, { genre: 'お金' }, { genre: '仕事' }, { genre: '文化' }, { genre: '教育' }, { genre: 'スポーツ' },
+Label.create!([ { genre: 'お金' }, { genre: '仕事' }, { genre: '文化' }, { genre: '教育' }, { genre: 'スポーツ' },
     { genre: 'ゲーム' }, { genre: '法律' }, { genre: '政治' }, { genre: '経済' }, { genre: '科学技術' }])
 
