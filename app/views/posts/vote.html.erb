@@ -43,8 +43,8 @@
   </ul>
   <%= paginate @posts %>
 </div>
-  <div class='chart'>
-   <%= column_chart Vote.limit(10).group(:post_id).group(:value).count, ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%> 
-  </div>
+   <div class='chart'>
+    <%= column_chart Vote.group(:post_id).group(:value).count, ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%> 
+   </div>
 
 
