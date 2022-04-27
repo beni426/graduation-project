@@ -28,7 +28,7 @@
 [テーブル定義](https://docs.google.com/spreadsheets/d/1nJV5vUM4nlcuy_dHZL-Nm0faMpxgfZPWz8KifM2saCs/edit?usp=sharing)
 
 # ワイヤーフレーム
-[ワイヤーフレーム.pdf](https://github.com/beni426/graduation-project/files/8569095/default.pdf)
+[ワイヤーフレーム.pdf](https://github.com/beni426/graduation-project/files/8569130/default.pdf)
 
 # 卒業課題ER図
 [卒業課題ER図.pdf](https://github.com/beni426/graduation-project/files/8371272/ER.pdf)
