@@ -1,9 +1,17 @@
 # README
-
+# [アプリケーション名]*　kiraibar
 # 開発言語
 
 * Ruby　3.0.1
 * Rails 6.0.3
+
+# 主な使用Gem
+
+* devise
+* rails_admin
+* carrier_wave
+* kaminari
+* cancancan
 
 # 就業Termの技術
 * devise
