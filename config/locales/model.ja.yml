@@ -16,6 +16,7 @@ ja:
         description: 説明
         image: 画像
         status: ステータス
+        genre: ジャンル
         edit: 編集
         destroy: 削除
         back: 戻る
@@ -77,6 +78,7 @@ ja:
       roast: '愚痴'
       refresh: 'スッキリ' 
       voted: '投票済'  
+      genre: 'ジャンル'
 
       
 
