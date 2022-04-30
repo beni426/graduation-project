@@ -1,16 +1,16 @@
 <%= form_with(model: post, url: choose_new_or_edit, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "件エラー") %><%= I18n.t("errors.messages.not_saved_post") %></h2>
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if post.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(post.errors.count, "件エラー") %><%= I18n.t("errors.messages.not_saved_post") %></h2>
+  <ul>
+    <% post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class='post-form'>
-<h1>新規投稿</h1>
+  <h1>新規投稿</h1>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title,class: 'form-control',placeholder: "今日のきらいを書こう, #{current_user.name}！", autofocus: true %>
@@ -26,22 +26,22 @@
     <%= form.file_field :image %>
   </div>
   <div class="label_layout">
-   <%= form.label I18n.t('views.post.genre') %><br>
-   <%= form.collection_check_boxes(:label_ids, Label.all, :id, :genre) %>
-   </div>
-    <div class="field">
-     <%= form.label(:public, for: nil, class:'post-status__label') do %>
-      <%= form.radio_button :status, :public %>
-      <%= I18n.t('activerecord.attributes.post.statuses.public') %>
+    <%= form.label I18n.t('views.post.genre') %><br>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :genre) %>
+  </div>
+  <div class="field">
+    <%= form.label(:public, for: nil, class:'post-status__label') do %>
+    <%= form.radio_button :status, :public %>
+    <%= I18n.t('activerecord.attributes.post.statuses.public') %>
     <% end %>
     <%= form.label(:private, for: nil, class:'post-status__label') do %>
-      <%= form.radio_button :status, :private %>
-      <%= I18n.t('activerecord.attributes.post.statuses.private') %>
-     <% end %>
+    <%= form.radio_button :status, :private %>
+    <%= I18n.t('activerecord.attributes.post.statuses.private') %>
+    <% end %>
   </div>
   <div class="actions">
     <%= form.submit %>
   </div>
   <%= link_to I18n.t('activerecord.attributes.post.back') , posts_path %>
-  </div>
+</div>
 <% end %>

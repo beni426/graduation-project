@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_post, only: %i[create edit update]
-  
+
   def create
     @comment = @post.comments.build(comment_params)
     respond_to do |format|

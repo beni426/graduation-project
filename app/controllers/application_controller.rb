@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
-  
+
   def check_guest
     email = resource&.email || params[:user][:email].downcase
     if ['guest@example.com', 'guestadmin@example.com'].include?(email)

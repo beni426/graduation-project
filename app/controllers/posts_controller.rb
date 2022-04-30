@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
-  
+
   def index
     @posts = Post.all.includes(:user).status_public.order(created_at: :desc).page(params[:page]).per(10)
     @posts = @posts.all.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
@@ -26,10 +28,10 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-   @post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
     hash_label = {}
     params[:post][:label_ids].each do |label|
-      hash_label[:label_ids] = label.split(",").flatten
+      hash_label[:label_ids] = label.split(',').flatten
     end
     @post.attributes = hash_label
     if params[:back]
@@ -59,7 +61,6 @@ class PostsController < ApplicationController
   def vote_up
     vote = current_user.votes.create(post_id: params[:id])
     redirect_to votes_path, notice: '投票をしました！'
- 
   end
 
   def top; end
@@ -91,10 +92,9 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :image_cache, { label_ids: []}, :status)
+    params.require(:post).permit(:title, :description, :image, :image_cache, { label_ids: [] }, :status)
   end
   # def vote_params
   #   params.permit(:user_id, :post_id, :value)
   # end
-
 end

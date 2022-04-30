@@ -1,90 +1,89 @@
 <% provide(:title, "(#{@user.name})") %>
 <div class='profile-block'>
-<%= form_with(model: @user,class:'back-design', local: true) do |form| %>
-<div class='back-design'>
-<% if user_signed_in? && @user == current_user %>
- <h1>マイページ</h1>
+  <%= form_with(model: @user,class:'back-design', local: true) do |form| %>
+  <div class='back-design'>
+    <% if user_signed_in? && @user == current_user %>
+    <h1>マイページ</h1>
     <%= form.hidden_field :image_cache %>
     <% if @user.image.url.present? %>
-        <%= image_tag (@user.image.url if @user.image && @user.image.url) ,class: 'image-icon'%>
-        <% else %>
-        <%= image_tag 'user_default.png',:size =>'150x150', class: 'image-icon' %>
-        <% end %>
-   <p><%= @user.name %> : profile</p>
-   <p><%= @user.email %></p>
+    <%= image_tag (@user.image.url if @user.image && @user.image.url) ,class: 'image-icon'%>
+    <% else %>
+    <%= image_tag 'user_default.png',:size =>'150x150', class: 'image-icon' %>
+    <% end %>
+    <p><%= @user.name %> : profile</p>
+    <p><%= @user.email %></p>
   </div>
- <% else %>
- <h1>ユーザーページ</h1>
- <% end %>
- <% end %>
-  
-<% if user_signed_in? && @user == current_user %>
-  <%= link_to t('views.user.profile'), edit_user_registration_path(current_user) %>
-<% end %>
+  <% else %>
+  <h1>ユーザーページ</h1>
+  <% end %>
+  <% end %>
 
- <p> 今日のスッキリ<p>
-   <div class='energy'>
-    <%= bar_chart @array_data, xtitle: '投票総数',ytitle: 'ポスト'%> 
-   </div> 
-  </div>
+  <% if user_signed_in? && @user == current_user %>
+  <%= link_to t('views.user.profile'), edit_user_registration_path(current_user) %>
+  <% end %>
+
+  <p> 今日のスッキリ<p>
+      <div class='energy'>
+        <%= bar_chart @array_data, xtitle: '投票総数',ytitle: 'ポスト'%>
+      </div>
+</div>
 <div class='post-block'>
-<div class="posts-form-show">
-<h1><%= @user.name %>さんの投稿</h1>
-  <ul class="post-list">
-    <% @user.posts.each do |post| %>
-     <li class="post-list-item">
-       <div class='post_block_top'>
-       <a href=<%= post_path(post.id)%>>
-        <% unless post.image.url.nil? %>
-        <%= image_tag (post.image.url if post.image && post.image.url) %>
-        <% else %>
-        <%= image_tag 'sea.jpg',width: '80%', height: '80%' %>
-        <% end %>
+  <div class="posts-form-show">
+    <h1><%= @user.name %>さんの投稿</h1>
+    <ul class="post-list">
+      <% @user.posts.each do |post| %>
+      <li class="post-list-item">
+        <div class='post_block_top'>
+          <a href=<%= post_path(post.id)%>>
+            <% unless post.image.url.nil? %>
+            <%= image_tag (post.image.url if post.image && post.image.url) %>
+            <% else %>
+            <%= image_tag 'sea.jpg',width: '80%', height: '80%' %>
+            <% end %>
         </div>
         <div class='post_block_bottom'>
-            <%= post.title %>
+          <%= post.title %>
         </div>
-         </a>
+        </a>
         <div class='post_block_detail'>
-           <%= post.description %>
+          <%= post.description %>
         </div>
-       
+
       </li>
       <div class="post_item-description">
       </div>
-     <% end %>
+      <% end %>
     </ul>
-</div>
+  </div>
 </div>
 <div class='stock-block'>
-<% if user_signed_in? && @user == current_user %>
-<h1><%= @user.name %>さんストックした投稿</h1>
-<% if @stock_list.present? %>
-<div class="posts-form">
-  <ul class="post-list">
-  <% @stock_list.each do |stock| %>
-   <li class="post-list-item">
-    <div>
-    <a href=<%= post_path(stock.id)%>>
-    <%= stock.user.name %>
-    </div>
-     <div>
-      <% if stock.image.url.present? %> 
-       <%= image_tag stock.image.url %> 
-      <% else %> 
-      <%= image_tag '/assets/smiley-2.jpg',width: '60%', height: '40%' %>
-      <% end %>
-      </a>
-      <% end %>
-    </div>
-    <% end %>
-    </li>
-   </ul>
+  <% if user_signed_in? && @user == current_user %>
+  <h1><%= @user.name %>さんストックした投稿</h1>
+  <% if @stock_list.present? %>
+  <div class="posts-form">
+    <ul class="post-list">
+      <% @stock_list.each do |stock| %>
+      <li class="post-list-item">
+        <div>
+          <a href=<%= post_path(stock.id)%>>
+            <%= stock.user.name %>
+        </div>
+        <div>
+          <% if stock.image.url.present? %>
+          <%= image_tag stock.image.url %>
+          <% else %>
+          <%= image_tag '/assets/smiley-2.jpg',width: '60%', height: '40%' %>
+          <% end %>
+          </a>
+          <% end %>
+        </div>
+        <% end %>
+      </li>
+    </ul>
   </div>
   <% else %>
- <div class='message_block'>
-   my note
- </div>
-<% end %>
-
+  <div class='message_block'>
+    my note
+  </div>
+  <% end %>
 </div>

@@ -1,68 +1,78 @@
-<div class= 'container1'>
+<div class='container1'>
   <div class='top_page'>
-   <div class = 'main_box'>
-     <div class= 'front'>
-       <%= image_tag '/assets/1.jpg',:size =>'300x300' %>
-     </div>
-     <div class= 'back'>
+    <div class='main_box'>
+      <div class='front'>
+        <%= image_tag '/assets/1.jpg',:size =>'300x300' %>
+      </div>
+      <div class='back'>
         <%= image_tag '/assets/2.jpg',:size =>'300x300' %>
-     </div>
-     <div class= 'left'>
-       <%= image_tag '/assets/3.jpg',:size =>'300x300' %>
-     </div>
-     <div class= 'right'>
-       <%= image_tag '/assets/4.jpg',:size =>'300x300' %>
-     </div>
-     <div class= 'top'>
-       <%= image_tag '/assets/5.jpg',:size =>'300x300' %>
-     </div>
-     <div class= 'bottom'>
-       <%= image_tag '/assets/6.jpg',:size =>'300x300' %>
-     </div>
+      </div>
+      <div class='left'>
+        <%= image_tag '/assets/3.jpg',:size =>'300x300' %>
+      </div>
+      <div class='right'>
+        <%= image_tag '/assets/4.jpg',:size =>'300x300' %>
+      </div>
+      <div class='top'>
+        <%= image_tag '/assets/5.jpg',:size =>'300x300' %>
+      </div>
+      <div class='bottom'>
+        <%= image_tag '/assets/6.jpg',:size =>'300x300' %>
+      </div>
 
+    </div>
+    <div class='text_block' class='autotype' id='autotype'>
+      <div class='title'>
+        <p>
+          <h2><strong>KIRAIBARへようこそ</strong>
+            <h2>
+        </p>
+
+        <p>
+          <h4>日常生活において、誰しもストレスに直面しえます。 </h4>
+        </p>
+        <p>
+          <h4> 大人になってから人の前に「嫌い」という言葉を言えなくなりました。 </h4>
+        </p>
+        <p>
+          <h4> KIRAIBARで嫌いなことをとことんぶちまけて気持ちをスッキリさせることができます。
+          </h4>
+        </p>
+        <p>
+          <h4>愚痴やクレーム、記事、写真などを投稿したり、気になるユーザーにメッセージを送ることによって
+            ストレスの解消に繋がります。 </h4>
+        </p>
+        <p>
+          <h4> 投票機能を活用して、ほかの利用者の方と気持ちを共有することができます。
+            投票してもらった数をグラフで確認できるため、視覚的に共感度がわかります. </h4>
+        </p>
+
+
+        </h4>
+        </p>
+      </div>
+    </div>
   </div>
-     <div class='text_block' class='autotype' id = 'autotype'>
-        <div class='title'>
-          <p><h2><strong>KIRAIBARへようこそ</strong><h2></p>
-     
-     <p><h4>日常生活において、誰しもストレスに直面しえます。 </h4></p>
-         <p><h4> 大人になってから人の前に「嫌い」という言葉を言えなくなりました。 </h4></p>
-         <p><h4> KIRAIBARで嫌いなことをとことんぶちまけて気持ちをスッキリさせることができます。
-     </h4></p>
-       <p><h4>愚痴やクレーム、記事、写真などを投稿したり、気になるユーザーにメッセージを送ることによって
-       ストレスの解消に繋がります。 </h4></p>
-      <p><h4> 投票機能を活用して、ほかの利用者の方と気持ちを共有することができます。
-      投票してもらった数をグラフで確認できるため、視覚的に共感度がわかります. </h4></p>
-      
-      
-      </h4></p>
-
-
-   </div> 
-  </div>
- </div>
-
-  
 </div>
 <script>
-   $.fn.autotype = function(){
-     var $text=$(this);
-     console.log('this',this);
-     var str= $text.html();
-     var index=0;
+  $.fn.autotype = function () {
+    var $text = $(this);
+    console.log('this', this);
+    var str = $text.html();
+    var index = 0;
     var x = $text.html();
-    var timer=setInterval(function(){
-     var current =str.substr(index,1);
-        if (current == '<'){
-         index = str.indexOf('>',index)+1;
-        }else{
-          index ++;
-       }
-     $text.html(str.substring(0,index)+(index & 1 ?'I':""));
-       if(index>=str.length){
-           clearInterval(timer);
-         }
-       },100);
-      };
-      $("#autotype").autotype();
+    var timer = setInterval(function () {
+      var current = str.substr(index, 1);
+      if (current == '<') {
+        index = str.indexOf('>', index) + 1;
+      } else {
+        index++;
+      }
+      $text.html(str.substring(0, index) + (index & 1 ? 'I' : ""));
+      if (index >= str.length) {
+        clearInterval(timer);
+      }
+    }, 100);
+  };
+  $("#autotype").autotype();
 </script>

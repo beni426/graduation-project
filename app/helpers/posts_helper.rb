@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 module PostsHelper
   def choose_new_or_edit
-    if action_name == 'new' || action_name == 'create'
+    case action_name
+    when 'new', 'create'
       confirm_posts_path
-    elsif action_name == 'edit'
+    when 'edit'
       post_path
     end
   end

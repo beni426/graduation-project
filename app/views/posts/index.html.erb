@@ -2,45 +2,33 @@
 <% if current_user.try(:admin?) %>
 <h1>Posts_admin</h1>
 <% end %>
-
 <div class="posts-form">
   <ul class="post-list">
     <% @posts.each do |post| %>
     <%  if post.status_public? %>
-     <li class="post-list-item" >
-       <div class='post_block_top'>
-       <a href=<%= post_path(post.id)%>>
-        <% unless post.image.url.nil? %>
-        <%= image_tag post.image.url if post.image && post.image.url %>
-        <% else %>
-        <%= image_tag 'smiley-2.jpg',width: '60%', height: '40%' %>
-        <% end %>
-        </div>
-  
-        <div class='post_block_bottom'>
-            <%= post.title %><br><br>
-            <%= time_ago_in_words(post.created_at)+'ago' %>
-        </div>
-       </a>
-        <div class='post_block_detail'>
-           <%= post.description %>
-        </div>
-        <div class='detail-icon'>
+    <li class="post-list-item">
+      <div class='post_block_top'>
+        <a href=<%= post_path(post.id)%>>
+          <% unless post.image.url.nil? %>
+          <%= image_tag post.image.url if post.image && post.image.url %>
+          <% else %>
+          <%= image_tag 'smiley-2.jpg',width: '60%', height: '40%' %>
+          <% end %>
+      </div>
+      <div class='post_block_bottom'>
+        <%= post.title %><br><br>
+        <%= time_ago_in_words(post.created_at)+'ago' %>
+      </div>
+      </a>
+      <div class='post_block_detail'>
+        <%= post.description %>
+      </div>
+      <div class='detail-icon'>
         <%= link_to(content_tag(:i, "", class: "fa fa-eye",style:"font-size: 1.6em;"),post_path(post.id)) %>
-        </div>
-       
-       <% end %>
-      </li>
-     
+      </div>
+      <% end %>
+    </li>
     <% end %>
   </ul>
   <%= paginate @posts %>
 </div>
-
-
-
-
- 
-
-
-

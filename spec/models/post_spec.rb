@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe Post, type: :model do
   let!(:user) { User.create(name: 'user_name', email: 'user@email.com', password: 'password') }
@@ -5,7 +7,7 @@ RSpec.describe Post, type: :model do
   # タイトルと内容あれば有効な状態であること
   context 'ポストのタイトルが空の場合' do
     it 'バリデーションにひっかかる' do
-      post = Post.new(title: nil, description: '失敗テスト',image: nil)
+      post = Post.new(title: nil, description: '失敗テスト', image: nil)
       expect(post).not_to be_valid
     end
   end

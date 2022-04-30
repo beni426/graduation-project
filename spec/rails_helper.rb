@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require'devise'
+require 'devise'
 require 'support/controller_macros'
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -18,10 +20,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } 
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
   config.include SignInSpecHelper, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
-  config.extend ControllerMacros, :type => :controller 
+  config.extend ControllerMacros, type: :controller
 end

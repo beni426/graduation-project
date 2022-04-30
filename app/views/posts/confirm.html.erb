@@ -1,28 +1,28 @@
 <% provide(:title, "投稿確認") %>
 <div class="post-form">
   <%= form_with(model: @post, local: true) do |form| %>
-    <div class="post-header">
-    </div>
-     <%= form.label :title, class: "sr-only" %>
-    <%= form.text_area :title, class: "form-control", placeholder: ".....", readonly: true %>
-    <%= form.label :description, class: "sr-only" %>
-    <%= form.text_area :description, class: "form-control", placeholder: ".....", readonly: true %>
-     <%= form.label :status, class: "sr-only" %>
-    <%= form.text_area :status, class: "form-control", placeholder: ".....", readonly: true %>
-    <%= form.label :label, class: "sr-only" %>
-    <%= form.hidden_field :label_ids,multiple: true, value: @post.label_ids.join(","), class: "form-control" %>
-    <%= form.label :image, class: "sr-only" %>
-    <%= form.hidden_field :image, class: "form-control" %>
-    <%= form.hidden_field :image_cache %>
-    <div class="post-image-box">
+  <div class="post-header">
+  </div>
+  <%= form.label :title, class: "sr-only" %>
+  <%= form.text_area :title, class: "form-control", placeholder: ".....", readonly: true %>
+  <%= form.label :description, class: "sr-only" %>
+  <%= form.text_area :description, class: "form-control", placeholder: ".....", readonly: true %>
+  <%= form.label :status, class: "sr-only" %>
+  <%= form.text_area :status, class: "form-control", placeholder: ".....", readonly: true %>
+  <%= form.label :label, class: "sr-only" %>
+  <%= form.hidden_field :label_ids,multiple: true, value: @post.label_ids.join(","), class: "form-control" %>
+  <%= form.label :image, class: "sr-only" %>
+  <%= form.hidden_field :image, class: "form-control" %>
+  <%= form.hidden_field :image_cache %>
+  <div class="post-image-box">
     <% if @post.image.url.present? %>
-      <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
-      <% else %>
-      <% image_tag '/assets/simley-2.jpg',:size =>'250x200' %>
-      <% end %>
-    </div>
-    <%= form.submit I18n.t('activerecord.attributes.post.post') , class: "btn-original" %>
-    <%= form.submit I18n.t('activerecord.attributes.post.back') , class: "btn-original btn-green", name: "back" %>
+    <%= image_tag(@post.image.url, class: "form-post-image") if @post.image && @post.image.url %>
+    <% else %>
+    <% image_tag '/assets/simley-2.jpg',:size =>'250x200' %>
+    <% end %>
+  </div>
+  <%= form.submit I18n.t('activerecord.attributes.post.post') , class: "btn-original" %>
+  <%= form.submit I18n.t('activerecord.attributes.post.back') , class: "btn-original btn-green", name: "back" %>
 
   <% end %>
 </div>

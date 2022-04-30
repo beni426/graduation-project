@@ -1,50 +1,47 @@
-
 <div class='label-title'>
-<%# <% if params[:local] == 'ja'%> 
-<p><strong>自分も'嫌い'と思ったバーをスッキリ投票しまくりましょう</strong></p>
- <p>スッキリバーを満タンになるように目指しましょう</p>
- <%# <% elsif params[:local] == 'en' %> 
-<p><strong>Push down the refresh button towards any roasts you are interested in</strong></p>
- <p>The more you push down the button, the bigger the refresh bar will become!</p>
-<%# <% end %> 
+  <%# <% if params[:local] == 'ja'%>
+  <p><strong>自分も'嫌い'と思ったバーをスッキリ投票しまくりましょう</strong></p>
+  <p>スッキリバーを満タンになるように目指しましょう</p>
+  <%# <% elsif params[:local] == 'en' %>
+  <p><strong>Push down the refresh button towards any roasts you are interested in</strong></p>
+  <p>The more you push down the button, the bigger the refresh bar will become!</p>
+  <%# <% end %>
 </div>
 <div class="posts-form-vote">
   <ul class="post-list-vote">
- 
-    <% @posts.each do |post| %>
-     <%  if post.status_public? %>
-     <li class="post-list-item-vote">
-       <div class='post_block_top'>
-          <div class='post-id'><%= post.id %></a></div>
-         <%= post.user.name %>さん
-        </div>
-        <div class='post_block_bottom'>
-           <%= post.description %>
-        </div>
-        <% if user_signed_in? %>
-        <div class='vote-button'>
-        <%= pluralize(post.votes.size, "票") %>
-         <% if post.vote_users.exclude?(current_user) %>
-         
-         <%= button_to t('views.post.refresh'), vote_up_post_path(post.id), method: :post %>
-         <% else %>
-          <div class='voted'>
-           <p><%= t('views.post.voted') %></p>
-          </div>
-         <% end %>
-         </div>
-         <% end %>
-       </li>
-       <div class="post_item-description">
 
+    <% @posts.each do |post| %>
+    <%  if post.status_public? %>
+    <li class="post-list-item-vote">
+      <div class='post_block_top'>
+        <div class='post-id'><%= post.id %></a></div>
+        <%= post.user.name %>さん
       </div>
-     <% end %>  
+      <div class='post_block_bottom'>
+        <%= post.description %>
+      </div>
+      <% if user_signed_in? %>
+      <div class='vote-button'>
+        <%= pluralize(post.votes.size, "票") %>
+        <% if post.vote_users.exclude?(current_user) %>
+
+        <%= button_to t('views.post.refresh'), vote_up_post_path(post.id), method: :post %>
+        <% else %>
+        <div class='voted'>
+          <p><%= t('views.post.voted') %></p>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </li>
+    <div class="post_item-description">
+
+    </div>
+    <% end %>
     <% end %>
   </ul>
   <%= paginate @posts %>
 </div>
-   <div class='chart'>
-    <%= column_chart Vote.group(:post_id).group(:value).count, ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%> 
-   </div>
-
-
+<div class='chart'>
+  <%= column_chart Vote.group(:post_id).group(:value).count, ytitle: "スッキリバー", xtitle: "KIRAIBAR-column"%>
+</div>
