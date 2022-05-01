@@ -1,14 +1,19 @@
 <ul class='comment-layout'>
   <% comments.each do |comment| %>
-    <% if comment.id.present? %>
-     <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
-      <li class='comment-list-layout'>
- 
-        <div class='comment-contents'><%= comment.content %></div>
-        <div class='comment-contents1'><%= link_to(content_tag(:i, "", class: "far fa-edit"),edit_post_comment_path(post, comment), remote: true) %></div>
-        <div class='comment-contents'><%= link_to(content_tag(:i, "", class: "far fa-trash-alt"),post_comment_path(comment.post_id, comment.id),method: :delete, remote: true,
+  <% if comment.id.present? %>
+  <div class="comment-content" id="this_comment_<%= comment.id %>"></div>
+  <li class='comment-list-layout'>
+    <%= content_tag(:span, comment.user.name,class: 'comment-username') %>
+    <%= content_tag(:span, time_ago_in_words(comment.created_at)) %>
+    <div class='comment-contents'><%= comment.content %></div>
+    <div class='comment-contents1'>
+      <% if comment.user == current_user %>
+      <%= link_to(content_tag(:i, "", class: "far fa-edit"),edit_post_comment_path(post, comment), remote: true) %>
+    </div>
+    <div class='comment-contents'><%= link_to(content_tag(:i, "", class: "far fa-trash-alt"),post_comment_path(comment.post_id, comment.id),method: :delete, remote: true,
                                         data: { confirm: "本当に削除しますか?"}) %></div>
-      </li>
-    <% end %>
+  </li>
+  <% end %>
+  <% end %>
   <% end %>
 </ul>

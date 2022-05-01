@@ -74,6 +74,7 @@
 
 </div>
 <div class='post-form-comment'>
+  <h2><%= Comment.model_name.human %></h2>
   <div id="comments_area">
     <%= render partial: 'comments/index',locals: {comments: @comments,post: @post} %>
   </div>

@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 5.times do |n|
   User.create!(name: "user#{n}", email: "user#{n}@test.com", password: '111111')
-  Post.create!(user_id: User.last.id, title: "post#{n}", description: "content#{n}",
+  Post.create!(user_id: User.last.id, title: "I don't like this lifestyle #{n}", description: "We are too busy to enjoy #{n}",
                image: File.open('./app/assets/images/choice-8.jpg'),
                status: 'public')
   Label.create!(genre: "生活#{n}")
