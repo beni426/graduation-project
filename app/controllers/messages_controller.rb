@@ -19,29 +19,20 @@ class MessagesController < ApplicationController
     @messages = @messages.order(:created_at)
     @message = @conversation.messages.build
   end
-  # def create
-  #       @message = @conversation.messages.build(message_params)
-  #      @conversation= @message.conversation
-  #     if @message.save
-  #       other_room = Conversation.where(conversation_id: @conversation.id).where.not(user_id: current_user.id)
-  #       theid= other_room.find_by(conversation_id: @conversation.id)
-  #       notification = current_user.active_notifications.new(
-  #          conversation_id: @conversation.id,
-  #          message_id: @message.id,
-  #          visited_id: @theid.user_id,
-  #          visitor_id: current_user.id,
-  #          action: 'dm'
-  #       )
-  #     if notification.visitor_id == notification.visited_id
-  #         notification.checked = true
-  #     end
-  #       notification.save if notification.valid?
+  #  def create
+  #   # @message = current_user.messages.new(message_params)
+  #   @message = @conversation.messages.build(message_params)
+  #   @conversation = @message.conversation
+  #    if @message.save
+  #     binding.pry
+  #     @message.conversation.create_notification_dm!(current_user, @message.conversation_id, @message.id)
+  #     @messages = @conversation.messages
+  #     @message = message.new(conversation_id: message_params[:conversation_id])
   #     redirect_to conversation_messages_path(@conversation)
-  #   else
-
+  #    else
   #     render 'index'
-  #   end
-  # end
+  #    end
+  #  end
   def create
     @message = @conversation.messages.build(message_params)
     if @message.save

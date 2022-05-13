@@ -1,0 +1,18 @@
+
+[1mFrom:[0m /home/beni/workspace/graduation/kiraibar/app/controllers/messages_controller.rb:25 MessagesController#create:
+
+    [1;34m22[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m23[0m:  @messages = @conversation.messages
+    [1;34m24[0m:  binding.pry
+ => [1;34m25[0m:  @message = current_user.messages.new(message_params)
+    [1;34m26[0m:  @conversation = @message.conversation
+    [1;34m27[0m:   [32mif[0m @message.save
+    [1;34m28[0m:    @message.conversation.create_notification_dm!(current_user, @message.conversation_id, @message.id)
+    [1;34m29[0m:    
+    [1;34m30[0m:    @message = message.new([35mconversation_id[0m: message_params[[33m:conversation_id[0m])
+    [1;34m31[0m:    redirect_to conversation_messages_path(@conversation)
+    [1;34m32[0m:   [32melse[0m
+    [1;34m33[0m:    render [31m[1;31m'[0m[31mindex[1;31m'[0m[31m[0m
+    [1;34m34[0m:   [32mend[0m
+    [1;34m35[0m: [32mend[0m
+
