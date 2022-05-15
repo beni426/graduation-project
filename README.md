@@ -1,9 +1,11 @@
 # README
-# [アプリケーション名]*　kiraibar
+【アプリケーション名】KIRAIBAR
+公開URL: 未完成
 # 開発言語
 
-* Ruby　3.0.1
-* Rails 6.0.3
+- Ruby　3.0.1
+- Rails 6.0.3
+- jQuery 3.5.1
 
 # 主な使用Gem
 
