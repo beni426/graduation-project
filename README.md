@@ -40,11 +40,12 @@
 
 # 卒業課題ER図
 [卒業課題ER図.pdf](https://github.com/beni426/graduation-project/files/8371272/ER.pdf)
-![卒業課題ER図](/images/卒業課題ER図.PNG)
+![卒業課題ER図](DOC/卒業課題ER図.PNG)
 
 # 卒業課題画面遷移図
 
 [卒業課題画面遷移図.pdf](https://github.com/beni426/graduation-project/files/8367705/default.pdf)
+![卒業課題ER図](DOC/卒業課題画面遷移図1.PNG)
 
 
 
