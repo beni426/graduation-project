@@ -37,7 +37,7 @@
         <li>
           <%= form_with url: posts_path, method: :get, local: true do |form| %>
           <%= form.select("label_id", Label.pluck(:genre, :id), { include_blank: true }) %>
-          <%= form.submit t('views.header.search'),, name: nil %></li>
+          <%= form.submit t('views.header.search'), name: nil %></li>
         <% end %>
         </li>
         <li><%= link_to t('views.header.top'),top_path %></li>
