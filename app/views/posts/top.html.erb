@@ -27,7 +27,7 @@
           <h2><strong>KIRAIBARへようこそ</strong>
             <h2>
         </p>
-
+        <% if params[:local] == 'ja'%>
         <p>
           <h4>日常生活において、誰しもストレスに直面しえます。 </h4>
         </p>
@@ -46,7 +46,13 @@
           <h4> 投票機能を活用して、ほかの利用者の方と気持ちを共有することができます。
             投票してもらった数をグラフで確認できるため、視覚的に共感度がわかります. </h4>
         </p>
+        <% elsif params[:local] == 'en' %>
 
+        <p>Stress, like being overworked or having arguments at home, can affect brain size, its structure and how
+          it functions , right down to the level of your genes.
+          This is the place where you can release your negative feelings and thoughts without any worries.
+          Just say it loudly ' I hate this world'.</p>
+        <% end %>
 
         </h4>
         </p>
