@@ -68,7 +68,8 @@ en:
 
     header:
       top: 'Top'
-      curiosity: 'Curiosity'
+      vote: 'Vote'
+      home: 'Home'
       blog: 'Blog'
       mypage: 'Mypage'
       logout: 'Logout'
