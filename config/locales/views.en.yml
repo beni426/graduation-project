@@ -67,6 +67,7 @@ en:
       userpage: 'userpage'
 
     header:
+      search: 'Search'
       top: 'Top'
       vote: 'Vote'
       home: 'Home'

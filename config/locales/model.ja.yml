@@ -59,6 +59,7 @@ ja:
     user:
       profile: 'プロファイル編集'
     header:
+      search: "ジャンルで検索"
       top: 'トップページ'
       vote: '投票'
       home: 'ホーム'
