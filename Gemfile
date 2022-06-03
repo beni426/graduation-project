@@ -29,7 +29,7 @@ gem 'unicorn'
 gem 'dotenv-rails'
 
 group :development, :test do
-    gem 'capistrano', '3.16.0' # capistranoのツール一式
+    gem 'capistrano' # capistranoのツール一式
     gem 'capistrano-bundler'
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
