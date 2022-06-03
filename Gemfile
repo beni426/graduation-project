@@ -24,6 +24,8 @@ gem 'rubocop', require: false
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'fog-aws'
+
 
 group :development, :test do
   gem 'better_errors'
