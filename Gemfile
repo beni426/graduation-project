@@ -25,13 +25,21 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'fog-aws'
-
+gem 'unicorn'
+gem 'dotenv-rails'
 
 group :development, :test do
+    gem 'capistrano', '3.16.0' # capistranoのツール一式
+    gem 'capistrano-bundler'
+    gem 'capistrano-rails'
+    gem 'capistrano-rbenv'
+    gem 'capistrano3-unicorn'
+    gem 'ed25519'
+    gem 'bcrypt_pbkdf'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails'
+ 
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
