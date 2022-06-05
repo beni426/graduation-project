@@ -78,6 +78,7 @@ en:
       guest_login: 'guest_login'
       login: 'Login'
       sign_in: 'Sign_in'
+      Signup: 'Signup'
       admin_guest_login: 'Admin_guest_login'
       message-room: 'Direct-message'
     post:
